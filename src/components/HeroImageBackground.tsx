@@ -1,6 +1,6 @@
 import cx from 'clsx';
 import { Button, Container, Overlay, Text, Title } from '@mantine/core';
-import classes from './HeroImageBackground.module.css';
+import classes from '../stylesheets/HeroImageBackground.module.css';
 
 export function HeroImageBackground() {
     return (
@@ -9,16 +9,15 @@ export function HeroImageBackground() {
 
     <div className={classes.inner}>
     <Title className={classes.title}>
-        Automated AI code reviews for{' '}
+        NKG Auto Repair, {' '}
                                      <Text component="span" inherit className={classes.highlight}>
-        any stack
+        Drive with Confidence!
     </Text>
     </Title>
 
     <Container size={640}>
     <Text size="lg" className={classes.description}>
-        Build more reliable software with AI companion. AI is also trained to detect lazy
-    developers who do nothing and just complain on Twitter.
+        Certified Mechanics, Quality Parts. Transparent pricing. Everything you need to drive stress-free.
     </Text>
     </Container>
 
@@ -26,9 +25,7 @@ export function HeroImageBackground() {
     <Button className={classes.control} variant="white" size="lg">
         Get started
     </Button>
-    <Button className={cx(classes.control, classes.secondaryControl)} size="lg">
-        Live demo
-    </Button>
+
     </div>
     </div>
     </div>

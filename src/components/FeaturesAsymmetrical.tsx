@@ -1,4 +1,4 @@
-import { IconCertificate, IconCoin, IconTruck } from '@tabler/icons-react';
+import { IconUsersGroup, IconCoin, IconScan } from '@tabler/icons-react';
 import { Container, SimpleGrid, Text } from '@mantine/core';
 import classes from '../stylesheets/FeaturesAsymmetrical.module.css';
 
@@ -28,22 +28,23 @@ function Feature({ icon: Icon, title, description, className, ...others }: Featu
 
 const mockdata = [
     {
-        icon: IconTruck,
-        title: 'Free Worldwide shipping',
-        description:
-            'As electricity builds up inside its body, it becomes more aggressive. One theory is that the electricity.',
-    },
-    {
-        icon: IconCertificate,
-        title: 'Best Quality Product',
-        description:
-            'Slakoth’s heart beats just once a minute. Whatever happens, it is content to loaf around motionless.',
-    },
-    {
         icon: IconCoin,
-        title: 'Very Affordable Pricing',
+        title: 'Affordable Pricing',
         description:
-            'Thought to have gone extinct, Relicanth was given a name that is a variation of the name of the person who discovered.',
+            'We offer a wide range of services at affordable prices, so you can get the care you' +
+            ' need without breaking the bank.',
+    },
+    {
+        icon: IconScan,
+        title: 'Honest Diagnostics',
+        description:
+            'No pressure, no upsells, no gimmicks. We just want to make sure your car is driving safely and smoothly.',
+    },
+    {
+        icon: IconUsersGroup,
+        title: 'Local, Family-Owned',
+        description:
+            'Proudly serving San Francisco with care and integrity since 2009. We are a local, family-owned business.',
     },
 ];
 

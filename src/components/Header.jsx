@@ -103,40 +103,11 @@ export function Header() {
                     />
 
                     <Group h="100%" gap={0} visibleFrom="sm">
-                        <a className={classes.link} onClick={() => handleNavigate('/')}>
-                            Home
+
+                        <a className={classes.link} onClick={closeDrawer} href={"#faq"}>
+                            FAQ
                         </a>
-                        <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
-                            <HoverCard.Target>
-                                <a className={classes.link}>
-                                    <Center inline>
-                                        <Box component="span" mr={5}>
-                                            Services
-                                        </Box>
-                                        <IconChevronDown
-                                            style={{ width: rem(16), height: rem(16) }}
-                                            color={theme.colors.blue[6]}
-                                        />
-                                    </Center>
-                                </a>
-                            </HoverCard.Target>
-
-                            <HoverCard.Dropdown style={{ overflow: 'hidden' }}>
-                                <Group justify="space-between" px="md">
-                                    <Text fw={500}>Services</Text>
-                                </Group>
-
-                                <Divider my="sm" />
-
-                                <SimpleGrid cols={2} spacing={0}>
-                                    {links}
-                                </SimpleGrid>
-                            </HoverCard.Dropdown>
-                        </HoverCard>
-                        <a className={classes.link} onClick={() => handleNavigate('/about')}>
-                            About
-                        </a>
-                        <a className={classes.link} onClick={() => handleNavigate('/contact')}>
+                        <a className={classes.link} onClick={closeDrawer} href={"#contact"}>
                             Contact
                         </a>
                     </Group>
@@ -156,25 +127,11 @@ export function Header() {
                 <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
                     <Divider my="sm" />
 
-                    <a className={classes.link} onClick={() => handleNavigate('/')}>
-                        Home
-                    </a>
-                    <UnstyledButton className={classes.link} onClick={toggleLinks}>
-                        <Center inline>
-                            <Box component="span" mr={5}>
-                                Features
-                            </Box>
-                            <IconChevronDown
-                                style={{ width: rem(16), height: rem(16) }}
-                                color={theme.colors.blue[6]}
-                            />
-                        </Center>
-                    </UnstyledButton>
                     <Collapse in={linksOpened}>{links}</Collapse>
-                    <a className={classes.link} onClick={() => handleNavigate('/about')}>
-                        About
+                    <a className={classes.link} onClick={closeDrawer} href={"#faq"}>
+                        FAQ
                     </a>
-                    <a className={classes.link} onClick={() => handleNavigate('/contact')}>
+                    <a className={classes.link}onClick={closeDrawer} href={"#contact"}>
                         Contact
                     </a>
 

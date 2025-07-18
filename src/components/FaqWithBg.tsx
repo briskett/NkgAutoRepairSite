@@ -65,6 +65,15 @@ export function FaqWithBg() {
                             Apple Pay and Google pay</Accordion.Panel>
                     </Accordion.Item>
 
+                    <Accordion.Item className={classes.item} value="store-hours">
+                        <Accordion.Control>What are your hours of operation?</Accordion.Control>
+                        <Accordion.Panel>
+                            We’re open Monday through Saturday, 8 AM to 5 PM.
+                            We are closed on Sundays.
+                        </Accordion.Panel>
+                    </Accordion.Item>
+
+
                 </Accordion>
             </Container>
         </div>

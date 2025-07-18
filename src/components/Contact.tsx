@@ -30,7 +30,8 @@ export function Contact() {
     return (
         <Paper shadow="md" radius="lg">
             <div className={classes.wrapper}>
-                <div className={classes.contacts} style={{ backgroundImage: `url('/bg.svg')` }}>
+                <div className={classes.contacts} style={{ backgroundImage: `url('${import.meta.env.BASE_URL}bg.svg')` }}
+                >
                     <Text fz="lg" fw={700} className={classes.title} c="#fff">
                         Contact information
                     </Text>

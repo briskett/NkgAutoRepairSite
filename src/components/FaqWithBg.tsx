@@ -54,15 +54,15 @@ export function FaqWithBg() {
 
                     <Accordion.Item className={classes.item} value="vehicles-offered">
                         <Accordion.Control>What types of vehicles do you work on?</Accordion.Control>
-                        <Accordion.Panel>We service most gas-powered cars, SUVS, small vans, hybrids
+                        <Accordion.Panel>We service most gas-powered cars, SUVs, small vans, hybrids,
                             and light-duty pickup trucks. We do not currently work on fully electric vehicles
-                            or commercial heavy duty trucks </Accordion.Panel>
+                            or commercial heavy duty trucks. </Accordion.Panel>
                     </Accordion.Item>
 
                     <Accordion.Item className={classes.item} value="payment-methods">
                         <Accordion.Control>What forms of payment do you accept?</Accordion.Control>
                         <Accordion.Panel> We accept cash, credit/debit cards, and mobile payments like
-                            Apple Pay and Google pay</Accordion.Panel>
+                            Apple Pay and Google pay.</Accordion.Panel>
                     </Accordion.Item>
 
                     <Accordion.Item className={classes.item} value="store-hours">

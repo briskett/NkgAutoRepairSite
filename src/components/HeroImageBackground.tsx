@@ -19,7 +19,7 @@ export function HeroImageBackground() {
 
     <Container size={640}>
     <Text size="lg" className={classes.description}>
-        Certified Mechanics, Quality Parts. Transparent pricing. Everything you need to drive stress-free.
+        Certified Mechanics. Quality Parts. Transparent pricing. Everything you need to drive stress-free.
     </Text>
     </Container>
 

@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { Button, Group, Paper, SimpleGrid, Text, Textarea, TextInput } from '@mantine/core';
 import emailjs from '@emailjs/browser';
-import bg from "../assets/bg.svg";
 import { ContactIconsList } from './ContactIcons';
 import classes from '../stylesheets/Contact.module.css';
 
@@ -31,7 +30,7 @@ export function Contact() {
     return (
         <Paper shadow="md" radius="lg">
             <div className={classes.wrapper}>
-                <div className={classes.contacts} style={{ backgroundImage: `url(${bg})` }}>
+                <div className={classes.contacts} style={{ backgroundImage: `url('/bg.svg')` }}>
                     <Text fz="lg" fw={700} className={classes.title} c="#fff">
                         Contact information
                     </Text>

@@ -105,9 +105,15 @@ export function Header() {
                     </button>
 
                     <Group h="100%" gap={0} visibleFrom="sm">
+                        <a className={classes.link} onClick={closeDrawer} href={"#services"}>
+                            Services
+                        </a>
 
                         <a className={classes.link} onClick={closeDrawer} href={"#faq"}>
                             FAQ
+                        </a>
+                        <a className={classes.link} onClick={closeDrawer} href={"#location"}>
+                            Find Us
                         </a>
                         <a className={classes.link} onClick={closeDrawer} href={"#contact"}>
                             Contact
@@ -130,8 +136,14 @@ export function Header() {
                     <Divider my="sm" />
 
                     <Collapse in={linksOpened}>{links}</Collapse>
+                    <a className={classes.link} onClick={closeDrawer} href={"#services"}>
+                        Services
+                    </a>
                     <a className={classes.link} onClick={closeDrawer} href={"#faq"}>
                         FAQ
+                    </a>
+                    <a className={classes.link} onClick={closeDrawer} href={"#location"}>
+                        Find Us
                     </a>
                     <a className={classes.link}onClick={closeDrawer} href={"#contact"}>
                         Contact

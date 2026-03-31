@@ -138,6 +138,7 @@
     margin-top: calc(var(--mantine-spacing-xl) * 1.2);
     display: flex;
     justify-content: flex-start;
+    gap: var(--mantine-spacing-md);
     padding-left: var(--mantine-spacing-md);
     padding-right: var(--mantine-spacing-md);
 
@@ -162,16 +163,8 @@
     @mixin hover {
         background-color: var(--mantine-color-orange-7);
     }
-
-    &:not(:first-of-type) {
-        margin-left: var(--mantine-spacing-md);
-    }
-
     @media (max-width: $mantine-breakpoint-xs) {
-        &:not(:first-of-type) {
-            margin-top: var(--mantine-spacing-md);
-            margin-left: 0;
-        }
+        width: 100%;
     }
 }
 

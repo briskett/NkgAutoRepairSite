@@ -36,6 +36,14 @@ export function HeroImageBackground() {
     </Container>
 
     <div className={classes.controls}>
+    <Button
+        component="a"
+        href="tel:+14152397450"
+        className={classes.control}
+        size="lg"
+    >
+        Call Now
+    </Button>
     <Button className={classes.control} size="lg" onClick={() => {
         const contactEl = document.getElementById('contact');
         if (contactEl) {

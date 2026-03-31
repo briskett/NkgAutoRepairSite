@@ -1,0 +1,43 @@
+.section {
+    margin-top: 34px;
+    padding-top: 28px;
+    padding-bottom: 8px;
+    position: relative;
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1000px, calc(100% - 2rem));
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.title {
+    color: var(--mantine-color-gray-0);
+    font-family: Outfit, var(--mantine-font-family);
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    color: var(--mantine-color-gray-3);
+    margin-top: 4px;
+    margin-bottom: 12px;
+}
+
+.mapWrap {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+}
+
+.map {
+    width: 100%;
+    height: 320px;
+    border: 0;
+    display: block;
+}

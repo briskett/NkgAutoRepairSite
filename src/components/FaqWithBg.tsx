@@ -26,13 +26,6 @@ export function FaqWithBg() {
                         </ThemeIcon>
                     }
                 >
-                    <Accordion.Item className={classes.item} value="services-offered">
-                        <Accordion.Control>What services do you offer?</Accordion.Control>
-                        <Accordion.Panel>We handle everything from oil changes and brake repairs to engine diagnostics,
-                            transmission work, suspension, and more. If your car needs it,
-                            chances are we do it.</Accordion.Panel>
-                    </Accordion.Item>
-
                     <Accordion.Item className={classes.item} value="appointment">
                         <Accordion.Control>Do I need an appointment or can I just show up?</Accordion.Control>
                         <Accordion.Panel>We operate mostly on a first-come, first-serve basis.

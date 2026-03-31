@@ -1,0 +1,29 @@
+.section {
+    padding-top: 18px;
+    padding-bottom: 20px;
+}
+
+.title {
+    color: var(--mantine-color-gray-0);
+    font-family: Outfit, var(--mantine-font-family);
+}
+
+.subtitle {
+    color: var(--mantine-color-gray-3);
+}
+
+.card {
+    background: rgba(17, 23, 32, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+}
+
+.serviceName {
+    color: var(--mantine-color-gray-0);
+}
+
+.estimate {
+    color: var(--mantine-color-orange-4);
+    margin-top: 6px;
+    font-weight: 700;
+}

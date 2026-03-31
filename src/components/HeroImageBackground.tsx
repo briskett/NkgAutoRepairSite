@@ -1,13 +1,25 @@
-import cx from 'clsx';
+import { useEffect, useState } from 'react';
 import { Button, Container, Overlay, Text, Title } from '@mantine/core';
 import classes from '../stylesheets/HeroImageBackground.module.css';
-import {useNavigate} from 'react-router-dom';
 
 export function HeroImageBackground() {
+    const [activeSlide, setActiveSlide] = useState(0);
+    const totalSlides = 3;
+
+    useEffect(() => {
+        const intervalId = window.setInterval(() => {
+            setActiveSlide((current) => (current + 1) % totalSlides);
+        }, 5500);
+
+        return () => window.clearInterval(intervalId);
+    }, []);
 
     return (
         <div className={classes.wrapper}>
-        <Overlay color="#000" opacity={0.65} zIndex={1} />
+        <div className={`${classes.background} ${classes.bgFamily} ${activeSlide === 0 ? classes.visible : ''}`} />
+        <div className={`${classes.background} ${classes.bgCars} ${activeSlide === 1 ? classes.visible : ''}`} />
+        <div className={`${classes.background} ${classes.bgDad} ${activeSlide === 2 ? classes.visible : ''}`} />
+        <Overlay color="#000" opacity={0.5} zIndex={1} />
 
     <div className={classes.inner}>
     <Title className={classes.title}>
@@ -24,7 +36,7 @@ export function HeroImageBackground() {
     </Container>
 
     <div className={classes.controls}>
-    <Button className={classes.control} variant="white" size="lg"  onClick={() => {
+    <Button className={classes.control} size="lg" onClick={() => {
         const contactEl = document.getElementById('contact');
         if (contactEl) {
             contactEl.scrollIntoView({ behavior: 'smooth' });

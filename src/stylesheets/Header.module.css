@@ -2,13 +2,34 @@
     height: rem(80px);
     padding-left: var(--mantine-spacing-lg);
     padding-right: var(--mantine-spacing-lg);
-    border-bottom: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+    background-color: rgba(15, 20, 27, 0.94);
+    border-bottom: rem(1px) solid rgba(255, 255, 255, 0.1);
 }
 
-.logo {
-    height: rem(70px);
-    padding: var(--mantine-spacing-xs);
+.brand {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--mantine-color-gray-0);
+    cursor: pointer;
+    text-align: left;
+}
 
+.brandTop {
+    letter-spacing: 0.16em;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--mantine-color-orange-4);
+}
+
+.brandBottom {
+    letter-spacing: 0.08em;
+    font-size: 1.05rem;
+    font-weight: 800;
 }
 
 .link {
@@ -18,7 +39,7 @@
     padding-left: var(--mantine-spacing-md);
     padding-right: var(--mantine-spacing-md);
     text-decoration: none;
-    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+    color: var(--mantine-color-gray-1);
     font-weight: 500;
     font-size: var(--mantine-font-size-sm);
 
@@ -28,7 +49,8 @@
     }
 
     @mixin hover {
-        background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+        color: var(--mantine-color-orange-3);
+        background-color: rgba(255, 255, 255, 0.04);
     }
 }
 

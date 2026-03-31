@@ -1,6 +1,7 @@
 .footer {
     margin-top: 120px;
-    border-top: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+    background-color: rgba(15, 20, 27, 0.88);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .inner {
@@ -21,8 +22,21 @@
     }
 }
 
-.logo {
-    height: rem(70px);
-    padding: var(--mantine-spacing-xs);
+.brand {
+    display: inline-flex;
+    flex-direction: column;
+}
 
+.brandTop {
+    letter-spacing: 0.16em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--mantine-color-orange-4);
+}
+
+.brandBottom {
+    letter-spacing: 0.08em;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--mantine-color-gray-0);
 }

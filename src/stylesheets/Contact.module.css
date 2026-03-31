@@ -66,6 +66,20 @@
     }
 }
 
+.contacts::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(165deg, rgba(10, 14, 20, 0.58), rgba(10, 14, 20, 0.38));
+    pointer-events: none;
+}
+
+.contacts > * {
+    position: relative;
+    z-index: 1;
+}
+
 .title {
     margin-bottom: calc(var(--mantine-spacing-xl) * 1.5);
     font-family:

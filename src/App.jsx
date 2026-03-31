@@ -9,6 +9,21 @@ import './stylesheets/App.css';
 const theme = createTheme({
     fontFamily: 'Montserrat, sans-serif',
     defaultRadius: 'md',
+    primaryColor: 'orange',
+    colors: {
+        dark: [
+            '#DDE1E7',
+            '#B7BEC8',
+            '#8F98A5',
+            '#6C7788',
+            '#4D586A',
+            '#394456',
+            '#2B3443',
+            '#1F2632',
+            '#161C26',
+            '#0E131C',
+        ],
+    },
 });
 
 const routes = [
@@ -18,7 +33,7 @@ const routes = [
 
 function App() {
     return (
-        <MantineProvider theme={theme}>
+        <MantineProvider theme={theme} forceColorScheme="dark">
             <Router>
                 <Header />
                 <Routes>

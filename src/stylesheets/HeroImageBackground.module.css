@@ -1,36 +1,118 @@
 .wrapper {
     position: relative;
-    padding-top: 180px;
-    padding-bottom: 130px;
-    background-image: url(../assets/bg2.jpg);
-    background-size: cover;
-    background-position: center;
+    overflow: hidden;
+    min-height: clamp(520px, 82vh, 760px);
+    padding-top: clamp(120px, 16vh, 170px);
+    padding-bottom: clamp(100px, 16vh, 150px);
+    display: flex;
+    align-items: center;
 
     @media (max-width: $mantine-breakpoint-xs) {
-        padding-top: 80px;
-        padding-bottom: 50px;
+        min-height: 500px;
+        padding-top: 96px;
+        padding-bottom: 72px;
+    }
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1.03);
+    transition: opacity 900ms ease-in-out, transform 7s ease;
+}
+
+.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.bgFamily {
+    background-image: url(../assets/hero-family.png);
+    background-position: center 42%;
+
+    @media (max-width: $mantine-breakpoint-xs) {
+        background-position: center 36%;
+    }
+}
+
+.bgCars {
+    background-image: url(../assets/bg2.jpg);
+    background-position: center 50%;
+
+    @media (max-width: $mantine-breakpoint-xs) {
+        background-position: center 42%;
+    }
+}
+
+.bgDad {
+    background-image: url(../assets/DAD.jpg);
+    background-position: center 35%;
+
+    @media (max-width: $mantine-breakpoint-xs) {
+        background-position: center 28%;
     }
 }
 
 .inner {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    width: 100%;
+    max-width: 620px;
+    margin-left: clamp(24px, 9vw, 140px);
+    margin-right: auto;
+    padding: clamp(8px, 1.2vw, 14px) clamp(10px, 1.8vw, 18px);
+}
+
+.inner::before {
+    content: '';
+    position: absolute;
+    inset: -10px -12px;
+    z-index: -1;
+    border-radius: 12px;
+    background: linear-gradient(160deg, rgba(8, 11, 16, 0.42), rgba(8, 11, 16, 0.16));
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+}
+
+@media (max-width: $mantine-breakpoint-sm) {
+    .inner {
+        max-width: 100%;
+        margin-left: var(--mantine-spacing-md);
+        margin-right: var(--mantine-spacing-md);
+        padding: var(--mantine-spacing-sm) var(--mantine-spacing-md);
+    }
+}
+
+@media (max-width: $mantine-breakpoint-xs) {
+    .inner {
+        margin-left: var(--mantine-spacing-sm);
+        margin-right: var(--mantine-spacing-sm);
+        text-align: center;
+    }
+
+    .inner::before {
+        inset: -8px -6px;
+    }
 }
 
 .title {
     font-weight: 800;
-    font-size: 40px;
+    font-size: clamp(30px, 4vw, 48px);
     letter-spacing: -1px;
     padding-left: var(--mantine-spacing-md);
     padding-right: var(--mantine-spacing-md);
     color: var(--mantine-color-white);
-    margin-bottom: var(--mantine-spacing-xs);
-    text-align: center;
+    margin-bottom: var(--mantine-spacing-md);
+    line-height: 1.2;
+    text-align: left;
     font-family: Outfit, var(--mantine-font-family);
 
     @media (max-width: $mantine-breakpoint-xs) {
-        font-size: 28px;
-        text-align: left;
+        font-size: 32px;
+        text-align: center;
     }
 }
 
@@ -40,29 +122,46 @@
 
 .description {
     color: var(--mantine-color-gray-0);
-    text-align: center;
+    text-align: left;
+    max-width: 620px;
+    margin: 0;
+    line-height: 1.45;
 
     @media (max-width: $mantine-breakpoint-xs) {
         font-size: var(--mantine-font-size-md);
-        text-align: left;
+        text-align: center;
+        margin: 0 auto;
     }
 }
 
 .controls {
-    margin-top: calc(var(--mantine-spacing-xl) * 1.5);
+    margin-top: calc(var(--mantine-spacing-xl) * 1.2);
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     padding-left: var(--mantine-spacing-md);
     padding-right: var(--mantine-spacing-md);
 
     @media (max-width: $mantine-breakpoint-xs) {
-        flex-direction: column;
+        margin-top: var(--mantine-spacing-xl);
+        justify-content: center;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
 .control {
-    height: 42px;
+    height: 46px;
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
     font-size: var(--mantine-font-size-md);
+    font-weight: 700;
+    background-color: var(--mantine-color-orange-6);
+    color: var(--mantine-color-white);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+
+    @mixin hover {
+        background-color: var(--mantine-color-orange-7);
+    }
 
     &:not(:first-of-type) {
         margin-left: var(--mantine-spacing-md);

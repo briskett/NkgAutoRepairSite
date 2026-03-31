@@ -1,3 +1,8 @@
 html {
     scroll-behavior: smooth;
 }
+
+body {
+    background: linear-gradient(180deg, #0f141b 0%, #151c26 55%, #0f141b 100%);
+    color: var(--mantine-color-gray-1);
+}

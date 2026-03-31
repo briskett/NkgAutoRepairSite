@@ -36,9 +36,9 @@ const mockdata = [
     },
     {
         icon: IconScan,
-        title: 'Honest Diagnostics',
+        title: 'Transparent Estimates',
         description:
-            'No pressure, no upsells, no gimmicks. We just want to make sure your car is driving safely and smoothly.',
+            'Clear pricing before any work begins. No pressure, no upsells, and no surprise charges.',
     },
     {
         icon: IconUsersGroup,

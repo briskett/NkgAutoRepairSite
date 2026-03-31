@@ -95,12 +95,14 @@ export function Header() {
         <Box pb={120}>
             <header className={classes.header}>
                 <Group justify="space-between" h="100%">
-                    <img
-                        className={classes.logo}
-                        src={"/header/logo.png"}
-                        alt={"Logo"}
+                    <button
+                        type="button"
+                        className={classes.brand}
                         onClick={() => handleNavigate('/')}
-                    />
+                    >
+                        <span className={classes.brandTop}>NKG AUTO</span>
+                        <span className={classes.brandBottom}>REPAIR</span>
+                    </button>
 
                     <Group h="100%" gap={0} visibleFrom="sm">
 

@@ -19,7 +19,7 @@ export function FaqWithBg() {
                     chevronSize={26}
                     variant="separated"
                     disableChevronRotation
-                    styles={{ label: { color: 'var(--mantine-color-black)' }, item: { border: 0 } }}
+                    styles={{ label: { color: 'var(--mantine-color-gray-0)' }, item: { border: 0 } }}
                     chevron={
                         <ThemeIcon radius="xl" className={classes.gradient} size={26}>
                             <IconPlus size={18} stroke={1.5} />

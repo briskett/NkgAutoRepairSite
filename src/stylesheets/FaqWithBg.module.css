@@ -1,14 +1,11 @@
 .wrapper {
     padding-top: calc(var(--mantine-spacing-xl) * 2);
     min-height: 820px;
-    background-image: radial-gradient(
-            var(--mantine-color-blue-6) 0%,
-            var(--mantine-color-blue-4) 100%
-    );
+    background-image: radial-gradient(circle at 20% 0%, #2f3641 0%, #1a202b 55%, #11161f 100%);
     background-repeat: no-repeat;
     background-position: top left;
     position: relative;
-    color: var(--mantine-color-black);
+    color: var(--mantine-color-gray-1);
 }
 
 .title {
@@ -20,17 +17,18 @@
 }
 
 .item {
-    background-color: var(--mantine-color-white) !important;
+    background-color: rgba(22, 28, 38, 0.96) !important;
     border-bottom: 0;
     border-radius: var(--mantine-radius-md);
-    box-shadow: var(--mantine-shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
     overflow: hidden;
 }
 
 .control {
     font-size: var(--mantine-font-size-lg);
     padding: var(--mantine-spacing-lg) var(--mantine-spacing-xl);
-    color: var(--mantine-color-black);
+    color: var(--mantine-color-gray-0);
 
     @mixin hover {
         background-color: transparent;
@@ -40,7 +38,7 @@
 .content {
     padding-left: var(--mantine-spacing-xl);
     line-height: 1.6;
-    color: var(--mantine-color-black);
+    color: var(--mantine-color-gray-3);
 }
 
 .icon {
@@ -48,10 +46,7 @@
 }
 
 .gradient {
-    background-image: radial-gradient(
-            var(--mantine-color-blue-6) 0%,
-            var(--mantine-color-blue-5) 100%
-    );
+    background-image: radial-gradient(circle, var(--mantine-color-orange-5) 0%, var(--mantine-color-orange-7) 100%);
 }
 
 .itemOpened {

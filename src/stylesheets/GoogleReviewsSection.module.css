@@ -1,0 +1,51 @@
+.section {
+    padding-top: 48px;
+    padding-bottom: 22px;
+}
+
+.title {
+    color: var(--mantine-color-gray-0);
+    font-family: Outfit, var(--mantine-font-family);
+}
+
+.subtitle {
+    color: var(--mantine-color-gray-4);
+}
+
+.summary {
+    text-align: right;
+}
+
+.starIcon {
+    color: var(--mantine-color-orange-5);
+}
+
+.reviewCard {
+    background-color: rgba(19, 25, 34, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.reviewStars {
+    color: var(--mantine-color-orange-5);
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.reviewText {
+    color: var(--mantine-color-gray-2);
+    line-height: 1.5;
+    min-height: 112px;
+}
+
+.reviewer {
+    color: var(--mantine-color-gray-0);
+    margin-top: 12px;
+    font-weight: 600;
+}
+
+.fallbackCard {
+    background-color: rgba(19, 25, 34, 0.92);
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+}

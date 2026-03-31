@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { Button, Container, Overlay, Text, Title } from '@mantine/core';
 import classes from '../stylesheets/HeroImageBackground.module.css';
@@ -22,16 +23,16 @@ export function HeroImageBackground() {
         <Overlay color="#000" opacity={0.5} zIndex={1} />
 
     <div className={classes.inner}>
-    <Title className={classes.title}>
-        NKG Auto Repair, {' '}
-                                     <Text component="span" inherit className={classes.highlight}>
-        Drive with Confidence!
-    </Text>
+    <Title order={1} className={classes.title}>
+        NKG Auto Repair, Bayview-Hunters Point{' '}
+        <Text component="span" inherit className={classes.highlight}>
+            Serving Since 2009!
+        </Text>
     </Title>
 
     <Container size={640}>
     <Text size="lg" className={classes.description}>
-        Certified Mechanics. Quality Parts. Transparent pricing. Everything you need to drive stress-free.
+        Oil changes, brake repair, engine diagnostics, transmission, suspension, and A/C repair—serving San Francisco drivers with transparent estimates since 2009.
     </Text>
     </Container>
 

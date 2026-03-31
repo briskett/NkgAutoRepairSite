@@ -11,17 +11,15 @@ interface FeatureProps extends React.ComponentPropsWithoutRef<'div'> {
 function Feature({ icon: Icon, title, description, className, ...others }: FeatureProps) {
     return (
         <div className={classes.feature} {...others}>
-            <div className={classes.overlay} />
-
-            <div className={classes.content}>
+            <div className={classes.iconWrap}>
                 <Icon size={38} className={classes.icon} stroke={1.5} />
-                <Text fw={700} fz="lg" mb="xs" mt={5} className={classes.title}>
-                    {title}
-                </Text>
-                <Text c="dimmed" fz="sm">
-                    {description}
-                </Text>
             </div>
+            <Text fw={700} fz="lg" mb="xs" mt={14} className={classes.title}>
+                {title}
+            </Text>
+            <Text fz="sm" className={classes.description}>
+                {description}
+            </Text>
         </div>
     );
 }
@@ -53,7 +51,7 @@ export function FeaturesAsymmetrical() {
 
     return (
         <Container mt={30} mb={30} size="lg">
-            <SimpleGrid cols={{ base: 1, sm: 3 }} spacing={50}>
+            <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="lg">
                 {items}
             </SimpleGrid>
         </Container>

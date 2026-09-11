@@ -1,6 +1,9 @@
 import { Button, Card, Container, Group, List, SimpleGrid, Text, Title } from '@mantine/core';
+import { Carousel } from '@mantine/carousel';
 import { IconMail, IconPhone } from '@tabler/icons-react';
 import classes from '../stylesheets/ServicesPage.module.css';
+import liftSpace1 from '../assets/rental/lift-space-1.jpg';
+import liftSpace2 from '../assets/rental/lift-space-2.jpg';
 
 const serviceDetails = [
     {
@@ -77,40 +80,57 @@ export default function Services() {
 
                 <section className={classes.rentalSection}>
                     <Card className={classes.rentalCard}>
-                        <Text className={classes.kicker}>Shop Space</Text>
-                        <Title order={2} className={classes.rentalTitle}>Lift Space for Rent</Title>
-                        <Text className={classes.cardBody} mb="md">
-                            We have a dedicated lift open at our Bayview-Hunters Point shop. Great fit for an independent
-                            or mobile mechanic who wants reliable indoor shop space without signing a commercial lease.
-                        </Text>
-                        <List className={classes.rentalList} mb="lg">
-                            <List.Item>Dedicated lift, full-time access</List.Item>
-                            <List.Item>Power, air compressor, and lighting included</List.Item>
-                            <List.Item>Monday-Saturday, 8am-5pm</List.Item>
-                            <List.Item>Bring your own tools</List.Item>
-                        </List>
-                        <Group justify="space-between" wrap="wrap" gap="md">
-                            <Text className={classes.rentalPrice}>$150/day or $2,000/month</Text>
-                            <Group>
-                                <Button
-                                    component="a"
-                                    href="tel:+14152397450"
-                                    color="orange"
-                                    leftSection={<IconPhone size={16} />}
-                                >
-                                    Call or Text
-                                </Button>
-                                <Button
-                                    component="a"
-                                    href="mailto:nkgautorepair@gmail.com"
-                                    variant="light"
-                                    color="orange"
-                                    leftSection={<IconMail size={16} />}
-                                >
-                                    Email
-                                </Button>
-                            </Group>
-                        </Group>
+                        <SimpleGrid cols={{ base: 1, md: 2 }} spacing="xl" verticalSpacing="lg">
+                            <Carousel
+                                withIndicators
+                                withControls
+                                loop
+                                className={classes.rentalCarousel}
+                                classNames={{ indicator: classes.carouselIndicator }}
+                            >
+                                <Carousel.Slide>
+                                    <img src={liftSpace1} alt="Dedicated lift available for rent at NKG Auto Repair" className={classes.rentalImage} />
+                                </Carousel.Slide>
+                                <Carousel.Slide>
+                                    <img src={liftSpace2} alt="Shop floor at NKG Auto Repair, Bayview-Hunters Point" className={classes.rentalImage} />
+                                </Carousel.Slide>
+                            </Carousel>
+
+                            <div>
+                                <Text className={classes.kicker}>Shop Space</Text>
+                                <Title order={2} className={classes.rentalTitle}>Lift Space for Rent</Title>
+                                <Text className={classes.cardBody} mb="md">
+                                    We have a dedicated lift open at our Bayview-Hunters Point shop. Great fit for an independent
+                                    or mobile mechanic who wants reliable indoor shop space without signing a commercial lease.
+                                </Text>
+                                <List className={classes.rentalList} mb="lg">
+                                    <List.Item>Dedicated lift, full-time access</List.Item>
+                                    <List.Item>Power, air compressor, and lighting included</List.Item>
+                                    <List.Item>Monday-Saturday, 8am-5pm</List.Item>
+                                    <List.Item>Bring your own tools</List.Item>
+                                </List>
+                                <Text className={classes.rentalPrice} mb="md">$150/day or $2,000/month</Text>
+                                <Group>
+                                    <Button
+                                        component="a"
+                                        href="tel:+14152397450"
+                                        color="orange"
+                                        leftSection={<IconPhone size={16} />}
+                                    >
+                                        Call or Text
+                                    </Button>
+                                    <Button
+                                        component="a"
+                                        href="mailto:nkgautorepair@gmail.com"
+                                        variant="light"
+                                        color="orange"
+                                        leftSection={<IconMail size={16} />}
+                                    >
+                                        Email
+                                    </Button>
+                                </Group>
+                            </div>
+                        </SimpleGrid>
                     </Card>
                 </section>
             </Container>

@@ -1,0 +1,107 @@
+From 34359fb0239cf770708a16848e2f4cb39b88fd6d Mon Sep 17 00:00:00 2001
+From: William Ghanayem <william@nkgautorepair.com>
+Date: Fri, 11 Sep 2026 08:43:55 +0000
+Subject: [PATCH 1/2] Add lift space for rent section to services page
+
+---
+ src/pages/Services.jsx                  | 43 +++++++++++++++++++++++--
+ src/stylesheets/ServicesPage.module.css | 28 ++++++++++++++++
+ 2 files changed, 69 insertions(+), 2 deletions(-)
+
+diff --git a/src/pages/Services.jsx b/src/pages/Services.jsx
+index 4d98d24..5d66df2 100644
+--- a/src/pages/Services.jsx
++++ b/src/pages/Services.jsx
+@@ -1,5 +1,5 @@
+-import { Button, Card, Container, Group, SimpleGrid, Text, Title } from '@mantine/core';
+-import { IconPhone } from '@tabler/icons-react';
++import { Button, Card, Container, Group, List, SimpleGrid, Text, Title } from '@mantine/core';
++import { IconMail, IconPhone } from '@tabler/icons-react';
+ import classes from '../stylesheets/ServicesPage.module.css';
+ 
+ const serviceDetails = [
+@@ -74,6 +74,45 @@ export default function Services() {
+                         ))}
+                     </SimpleGrid>
+                 </section>
++
++                <section className={classes.rentalSection}>
++                    <Card className={classes.rentalCard}>
++                        <Text className={classes.kicker}>Shop Space</Text>
++                        <Title order={2} className={classes.rentalTitle}>Lift Space for Rent</Title>
++                        <Text className={classes.cardBody} mb="md">
++                            We have a dedicated lift open at our Bayview-Hunters Point shop. Great fit for an independent
++                            or mobile mechanic who wants reliable indoor shop space without signing a commercial lease.
++                        </Text>
++                        <List className={classes.rentalList} mb="lg">
++                            <List.Item>Dedicated lift, full-time access</List.Item>
++                            <List.Item>Power, air compressor, and lighting included</List.Item>
++                            <List.Item>Monday-Saturday, 8am-5pm</List.Item>
++                            <List.Item>Bring your own tools</List.Item>
++                        </List>
++                        <Group justify="space-between" wrap="wrap" gap="md">
++                            <Text className={classes.rentalPrice}>$150/day or $2,000/month</Text>
++                            <Group>
++                                <Button
++                                    component="a"
++                                    href="tel:+14152397450"
++                                    color="orange"
++                                    leftSection={<IconPhone size={16} />}
++                                >
++                                    Call or Text
++                                </Button>
++                                <Button
++                                    component="a"
++                                    href="mailto:nkgautorepair@gmail.com"
++                                    variant="light"
++                                    color="orange"
++                                    leftSection={<IconMail size={16} />}
++                                >
++                                    Email
++                                </Button>
++                            </Group>
++                        </Group>
++                    </Card>
++                </section>
+             </Container>
+         </main>
+     );
+diff --git a/src/stylesheets/ServicesPage.module.css b/src/stylesheets/ServicesPage.module.css
+index 3623e91..2b40acb 100644
+--- a/src/stylesheets/ServicesPage.module.css
++++ b/src/stylesheets/ServicesPage.module.css
+@@ -57,3 +57,31 @@
+     color: var(--mantine-color-gray-3);
+     line-height: 1.5;
+ }
++
++.rentalSection {
++    margin-top: 32px;
++}
++
++.rentalCard {
++    background: rgba(17, 23, 32, 0.92);
++    border: 1px solid rgba(247, 127, 0, 0.25);
++    border-radius: 12px;
++    padding: 28px;
++}
++
++.rentalTitle {
++    color: var(--mantine-color-gray-0);
++    margin-top: 4px;
++    margin-bottom: 12px;
++    font-family: Outfit, var(--mantine-font-family);
++}
++
++.rentalList {
++    color: var(--mantine-color-gray-3);
++}
++
++.rentalPrice {
++    color: var(--mantine-color-orange-4);
++    font-weight: 800;
++    font-size: 1.1rem;
++}
+-- 
+2.43.0
+

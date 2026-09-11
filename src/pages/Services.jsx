@@ -1,5 +1,5 @@
-import { Button, Card, Container, Group, SimpleGrid, Text, Title } from '@mantine/core';
-import { IconPhone } from '@tabler/icons-react';
+import { Button, Card, Container, Group, List, SimpleGrid, Text, Title } from '@mantine/core';
+import { IconMail, IconPhone } from '@tabler/icons-react';
 import classes from '../stylesheets/ServicesPage.module.css';
 
 const serviceDetails = [
@@ -73,6 +73,45 @@ export default function Services() {
                             </Card>
                         ))}
                     </SimpleGrid>
+                </section>
+
+                <section className={classes.rentalSection}>
+                    <Card className={classes.rentalCard}>
+                        <Text className={classes.kicker}>Shop Space</Text>
+                        <Title order={2} className={classes.rentalTitle}>Lift Space for Rent</Title>
+                        <Text className={classes.cardBody} mb="md">
+                            We have a dedicated lift open at our Bayview-Hunters Point shop. Great fit for an independent
+                            or mobile mechanic who wants reliable indoor shop space without signing a commercial lease.
+                        </Text>
+                        <List className={classes.rentalList} mb="lg">
+                            <List.Item>Dedicated lift, full-time access</List.Item>
+                            <List.Item>Power, air compressor, and lighting included</List.Item>
+                            <List.Item>Monday-Saturday, 8am-5pm</List.Item>
+                            <List.Item>Bring your own tools</List.Item>
+                        </List>
+                        <Group justify="space-between" wrap="wrap" gap="md">
+                            <Text className={classes.rentalPrice}>$150/day or $2,000/month</Text>
+                            <Group>
+                                <Button
+                                    component="a"
+                                    href="tel:+14152397450"
+                                    color="orange"
+                                    leftSection={<IconPhone size={16} />}
+                                >
+                                    Call or Text
+                                </Button>
+                                <Button
+                                    component="a"
+                                    href="mailto:nkgautorepair@gmail.com"
+                                    variant="light"
+                                    color="orange"
+                                    leftSection={<IconMail size={16} />}
+                                >
+                                    Email
+                                </Button>
+                            </Group>
+                        </Group>
+                    </Card>
                 </section>
             </Container>
         </main>

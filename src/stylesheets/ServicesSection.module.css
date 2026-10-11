@@ -16,6 +16,23 @@
     background: rgba(17, 23, 32, 0.92);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 150ms ease;
+}
+
+.card:hover {
+    border-color: rgba(247, 127, 0, 0.5);
+}
+
+.allLink {
+    color: var(--mantine-color-orange-4);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.allLink:hover {
+    text-decoration: underline;
 }
 
 .serviceName {

@@ -7,7 +7,8 @@
 .inner {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    gap: var(--mantine-spacing-xl);
     padding-top: var(--mantine-spacing-xl);
     padding-bottom: var(--mantine-spacing-xl);
 
@@ -16,10 +17,43 @@
     }
 }
 
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.columnTitle {
+    color: var(--mantine-color-gray-0);
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+}
+
+.link,
+.address a {
+    color: var(--mantine-color-gray-4);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.link:hover,
+.address a:hover {
+    color: var(--mantine-color-orange-4);
+}
+
+.address {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: var(--mantine-spacing-sm);
+    font-style: normal;
+    font-size: 0.9rem;
+    color: var(--mantine-color-gray-4);
+}
+
 .links {
-    @media (max-width: $mantine-breakpoint-xs) {
-        margin-top: var(--mantine-spacing-md);
-    }
+    margin-left: calc(var(--mantine-spacing-xs) * -1);
 }
 
 .brand {

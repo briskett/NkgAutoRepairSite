@@ -1,14 +1,6 @@
 import { Card, Container, Group, SimpleGrid, Text, Title } from '@mantine/core';
 import classes from '../stylesheets/ServicesSection.module.css';
-
-const services = [
-    { name: 'Oil changes', estimate: '$' },
-    { name: 'Brake repair', estimate: '$$' },
-    { name: 'Engine diagnostics', estimate: '$$' },
-    { name: 'Transmission', estimate: '$$$' },
-    { name: 'Suspension', estimate: '$$$' },
-    { name: 'AC repair', estimate: '$$' },
-];
+import { services, servicePath } from '../data/services.js';
 
 export function ServicesSection() {
     return (
@@ -24,12 +16,16 @@ export function ServicesSection() {
 
                 <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="md">
                     {services.map((service) => (
-                        <Card key={service.name} className={classes.card}>
+                        <Card key={service.slug} component="a" href={servicePath(service)} className={classes.card}>
                             <Text fw={700} className={classes.serviceName}>{service.name}</Text>
-                            <Text className={classes.estimate}>{service.estimate}</Text>
+                            <Text className={classes.estimate}>{service.tier}</Text>
                         </Card>
                     ))}
                 </SimpleGrid>
+
+                <Group justify="center" mt="lg">
+                    <a href="/services" className={classes.allLink}>See all services and details →</a>
+                </Group>
             </Container>
         </section>
     );

@@ -1,10 +1,14 @@
 import { createTheme, MantineProvider } from '@mantine/core';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
 import Header from './components/Header.jsx';
+import RouteHead from './components/RouteHead.jsx';
 import Home from './pages/Home.jsx';
 import Services from './pages/Services.jsx';
+import ServiceDetail from './pages/ServiceDetail.jsx';
+import LiftRental from './pages/LiftRental.jsx';
+import NotFound from './pages/NotFound.jsx';
 import Footer from './components/Footer.jsx';
 import './stylesheets/App.css';
 
@@ -28,24 +32,21 @@ const theme = createTheme({
     },
 });
 
-const routes = [
-    { path: '/', element: <Home />, name: 'Home' },
-    { path: '/services', element: <Services />, name: 'Services' },
-
-];
-
+// The router itself is provided by the entry point: BrowserRouter in main.jsx,
+// StaticRouter in entry-server.jsx when pages are prerendered at build time.
 function App() {
     return (
         <MantineProvider theme={theme} forceColorScheme="dark">
-            <Router>
-                <Header />
-                <Routes>
-                    {routes.map(({ path, element }) => (
-                        <Route key={path} path={path} element={element} />
-                    ))}
-                </Routes>
-                <Footer />
-            </Router>
+            <RouteHead />
+            <Header />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/services/:slug" element={<ServiceDetail />} />
+                <Route path="/lift-rental" element={<LiftRental />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+            <Footer />
         </MantineProvider>
     );
 }

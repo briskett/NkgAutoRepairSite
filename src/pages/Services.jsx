@@ -1,48 +1,15 @@
-import { Button, Card, Container, Group, List, SimpleGrid, Text, Title } from '@mantine/core';
-import { Carousel } from '@mantine/carousel';
-import { IconMail, IconPhone } from '@tabler/icons-react';
+import { Button, Card, Container, Group, SimpleGrid, Text, Title } from '@mantine/core';
+import { IconPhone } from '@tabler/icons-react';
+import Breadcrumbs from '../components/Breadcrumbs.jsx';
 import classes from '../stylesheets/ServicesPage.module.css';
 import liftSpace1 from '../assets/rental/lift-space-1.jpg';
-import liftSpace2 from '../assets/rental/lift-space-2.jpg';
-
-const serviceDetails = [
-    {
-        title: 'Oil Changes in Bayview',
-        tier: '$',
-        body: 'Routine oil and filter changes help protect your engine and improve daily reliability. Great for commuters driving around Bayview and across San Francisco.',
-    },
-    {
-        title: 'Brake Repair and Safety Checks',
-        tier: '$$',
-        body: 'Brake pads, rotors, and fluid inspections with safety-first recommendations. If your brakes squeak, grind, or feel soft, we can diagnose quickly.',
-    },
-    {
-        title: 'Engine Diagnostics',
-        tier: '$$',
-        body: 'Check-engine light and drivability diagnostics with clear explanations. We focus on accurate troubleshooting so you are not paying for guesswork.',
-    },
-    {
-        title: 'Transmission Service',
-        tier: '$$$',
-        body: 'Transmission inspection, fluid service, and repair planning. We explain next steps and urgency so you can make the right call for your vehicle.',
-    },
-    {
-        title: 'Suspension and Steering',
-        tier: '$$$',
-        body: 'We inspect shocks, struts, control arms, and steering components to restore ride comfort, handling, and safety for city driving.',
-    },
-    {
-        title: 'Auto AC Repair',
-        tier: '$$',
-        body: 'Air conditioning diagnosis and repair for weak cooling, leaks, and compressor-related issues. Stay comfortable during warm San Francisco days.',
-    },
-];
+import { services, servicePath } from '../data/services.js';
 
 export default function Services() {
     return (
         <main className={classes.page}>
             <Container size="lg">
-                <a href="/" className={classes.breadcrumb}>Home / Services</a>
+                <Breadcrumbs />
                 <section className={classes.hero}>
                     <Text className={classes.kicker}>NKG Auto Repair - Bayview, San Francisco</Text>
                     <Title className={classes.title}>Auto Repair Services in Bayview</Title>
@@ -66,13 +33,14 @@ export default function Services() {
 
                 <section>
                     <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
-                        {serviceDetails.map((service) => (
-                            <Card key={service.title} className={classes.card}>
+                        {services.map((service) => (
+                            <Card key={service.slug} component="a" href={servicePath(service)} className={classes.linkCard}>
                                 <Group justify="space-between" mb={6}>
-                                    <Text fw={700} className={classes.cardTitle}>{service.title}</Text>
+                                    <Text fw={700} className={classes.cardTitle}>{service.cardTitle}</Text>
                                     <Text className={classes.tier}>{service.tier}</Text>
                                 </Group>
-                                <Text className={classes.cardBody}>{service.body}</Text>
+                                <Text className={classes.cardBody}>{service.summary}</Text>
+                                <Text className={classes.learnMore} mt="sm">Learn more →</Text>
                             </Card>
                         ))}
                     </SimpleGrid>
@@ -81,21 +49,7 @@ export default function Services() {
                 <section className={classes.rentalSection}>
                     <Card className={classes.rentalCard}>
                         <SimpleGrid cols={{ base: 1, md: 2 }} spacing="xl" verticalSpacing="lg">
-                            <Carousel
-                                withIndicators
-                                withControls
-                                loop
-                                className={classes.rentalCarousel}
-                                classNames={{ indicator: classes.carouselIndicator }}
-                            >
-                                <Carousel.Slide>
-                                    <img src={liftSpace1} alt="Dedicated lift available for rent at NKG Auto Repair" className={classes.rentalImage} />
-                                </Carousel.Slide>
-                                <Carousel.Slide>
-                                    <img src={liftSpace2} alt="Shop floor at NKG Auto Repair, Bayview-Hunters Point" className={classes.rentalImage} />
-                                </Carousel.Slide>
-                            </Carousel>
-
+                            <img src={liftSpace1} alt="Dedicated lift available for rent at NKG Auto Repair" className={classes.rentalImage} />
                             <div>
                                 <Text className={classes.kicker}>Shop Space</Text>
                                 <Title order={2} className={classes.rentalTitle}>Lift Space for Rent</Title>
@@ -103,32 +57,10 @@ export default function Services() {
                                     We have a dedicated lift open at our Bayview-Hunters Point shop. Great fit for an independent
                                     or mobile mechanic who wants reliable indoor shop space without signing a commercial lease.
                                 </Text>
-                                <List className={classes.rentalList} mb="lg">
-                                    <List.Item>Dedicated lift, full-time access</List.Item>
-                                    <List.Item>Power, air compressor, and lighting included</List.Item>
-                                    <List.Item>Monday-Saturday, 8am-5pm</List.Item>
-                                    <List.Item>Bring your own tools</List.Item>
-                                </List>
                                 <Text className={classes.rentalPrice} mb="md">$150/day or $2,000/month</Text>
-                                <Group>
-                                    <Button
-                                        component="a"
-                                        href="tel:+14152397450"
-                                        color="orange"
-                                        leftSection={<IconPhone size={16} />}
-                                    >
-                                        Call or Text
-                                    </Button>
-                                    <Button
-                                        component="a"
-                                        href="mailto:nkgautorepair@gmail.com"
-                                        variant="light"
-                                        color="orange"
-                                        leftSection={<IconMail size={16} />}
-                                    >
-                                        Email
-                                    </Button>
-                                </Group>
+                                <Button component="a" href="/lift-rental" color="orange">
+                                    See the lift space
+                                </Button>
                             </div>
                         </SimpleGrid>
                     </Card>

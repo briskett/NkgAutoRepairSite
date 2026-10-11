@@ -30,7 +30,7 @@
 }
 
 .bgFamily {
-    background-image: url(../assets/hero-family.png);
+    background-image: url(../assets/hero-family.jpg);
     background-position: center 42%;
 
     @media (max-width: $mantine-breakpoint-xs) {

@@ -15,9 +15,36 @@ Marketing site for **NKG Auto Repair**, an auto repair shop in Bayview–Hunters
 
 ## Features
 
-- Home and Services pages with hero, services, FAQ, map, and footer
+- Home, Services, one page per service (`/services/<slug>`), and Lift Rental pages
 - Contact form (EmailJS)
-- SEO: meta tags, Open Graph, Twitter cards, and JSON-LD (`AutoRepair`) in `index.html`
+- SEO: every page is prerendered to static HTML at build time with its own title, description,
+  canonical URL, Open Graph tags, and JSON-LD (`AutoRepair` on every page, plus `Service` and
+  `BreadcrumbList` where relevant). `sitemap.xml` and `404.html` are generated from the page list.
+
+## How pages are built
+
+`npm run build` runs three steps:
+
+1. `vite build`: the normal client bundle in `dist/`
+2. `vite build --ssr src/entry-server.jsx`: a Node build of the app in `dist-ssr/`
+3. `node scripts/prerender.js`: renders every page in `src/data/pages.js` into
+   `dist/<path>/index.html`, writes `dist/404.html` and `dist/sitemap.xml`, then deletes `dist-ssr/`
+
+In the browser, `src/main.jsx` hydrates the prerendered HTML. On the dev server (no prerendering)
+it renders from scratch as before.
+
+### Adding or editing a service
+
+Service copy lives in `src/data/services.js`. Adding an entry there creates the page, its card on
+the home and services pages, its footer link, and its sitemap entry. Other new pages need an entry
+in `src/data/pages.js` and a `<Route>` in `src/App.jsx`.
+
+### Hosting (Render)
+
+- Build command: `npm install && npm run build` (it must run `npm run build`, not `vite build`, or pages won't be prerendered)
+- Publish directory: `dist`
+- Real 404s: Render serves `dist/404.html` for missing paths only if no rewrite rule matches, so
+  don't add a catch-all `/* → /index.html` rewrite. Every real page is now its own HTML file.
 
 
 ## Prerequisites
@@ -44,10 +71,13 @@ Open the URL Vite prints (usually `http://localhost:5173`).
 
 ## Project layout
 
-- `index.html` — Document head, SEO, and schema
-- `src/main.jsx` — App entry
-- `src/App.jsx` — Router, Mantine theme, layout shell
-- `src/pages/` — Page components (`Home`, `Services`)
+- `index.html` — Document head template and `AutoRepair` schema
+- `src/main.jsx` — Browser entry (hydrates prerendered pages)
+- `src/entry-server.jsx` — Build-time render entry used by `scripts/prerender.js`
+- `src/App.jsx` — Routes, Mantine theme, layout shell
+- `src/data/` — Business info, service copy, and the page list (titles, descriptions, breadcrumbs)
+- `src/seo.js` — Per-page head tags and JSON-LD
+- `src/pages/` — Page components (`Home`, `Services`, `ServiceDetail`, `LiftRental`, `NotFound`)
 - `src/components/` — Header, footer, sections, contact, etc.
 - `src/stylesheets/` — CSS modules and global styles
 - `public/` — Static assets (favicon, images referenced by URL)

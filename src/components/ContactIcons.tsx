@@ -29,7 +29,7 @@ const MOCKDATA = [
     { title: 'Email', description: 'nkgautorepair@gmail.com', icon: IconAt },
     { title: 'Phone', description: '+1 (415) 239 7450', icon: IconPhone },
     { title: 'Address', description: '1400 Carroll Avenue, San Francisco, CA', icon: IconMapPin },
-    { title: 'Working hours', description: '8 a.m. – 5 p.m.', icon: IconSun },
+    { title: 'Working hours', description: 'Mon–Sat, 8 a.m. – 5 p.m. Closed Sunday', icon: IconSun },
 ];
 
 export function ContactIconsList() {

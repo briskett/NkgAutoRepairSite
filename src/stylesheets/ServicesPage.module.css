@@ -6,12 +6,65 @@
     display: inline-block;
     margin-bottom: 12px;
     color: var(--mantine-color-gray-4);
-    text-decoration: none;
     font-size: 0.9rem;
 }
 
-.breadcrumb:hover {
+.breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
     color: var(--mantine-color-orange-4);
+}
+
+.section {
+    margin-top: 36px;
+}
+
+.sectionTitle {
+    color: var(--mantine-color-gray-0);
+    font-family: Outfit, var(--mantine-font-family);
+    font-size: 1.35rem;
+    margin-bottom: 12px;
+}
+
+.list {
+    color: var(--mantine-color-gray-3);
+}
+
+.faqQuestion {
+    color: var(--mantine-color-gray-0);
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+}
+
+.linkCard {
+    background: rgba(17, 23, 32, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 150ms ease;
+}
+
+.linkCard:hover {
+    border-color: rgba(247, 127, 0, 0.5);
+}
+
+.learnMore {
+    color: var(--mantine-color-orange-4);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.inlineLink {
+    color: var(--mantine-color-orange-4);
+    text-decoration: none;
+}
+
+.inlineLink:hover {
+    text-decoration: underline;
 }
 
 .hero {

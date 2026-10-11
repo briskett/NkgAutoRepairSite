@@ -16,7 +16,7 @@ export default function NotFound() {
                     </Text>
                     <Group mt="lg">
                         <Button component="a" href="/" color="orange">Home</Button>
-                        <Button component="a" href="/services" variant="light" color="orange">All Services</Button>
+                        <Button component="a" href="/services/" variant="light" color="orange">All Services</Button>
                         <Button
                             component="a"
                             href={`tel:${business.phone}`}

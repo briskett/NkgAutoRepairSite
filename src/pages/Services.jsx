@@ -58,7 +58,7 @@ export default function Services() {
                                     or mobile mechanic who wants reliable indoor shop space without signing a commercial lease.
                                 </Text>
                                 <Text className={classes.rentalPrice} mb="md">$150/day or $2,000/month</Text>
-                                <Button component="a" href="/lift-rental" color="orange">
+                                <Button component="a" href="/lift-rental/" color="orange">
                                     See the lift space
                                 </Button>
                             </div>

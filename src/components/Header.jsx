@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import classes from '../stylesheets/Header.module.css';
 
 const navLinks = [
-    { label: 'Services', href: '/services' },
-    { label: 'Lift Rental', href: '/lift-rental' },
+    { label: 'Services', href: '/services/' },
+    { label: 'Lift Rental', href: '/lift-rental/' },
     { label: 'FAQ', href: '/#faq' },
     { label: 'Find Us', href: '/#location' },
     { label: 'Contact', href: '/#contact' },

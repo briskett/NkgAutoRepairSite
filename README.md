@@ -43,8 +43,11 @@ in `src/data/pages.js` and a `<Route>` in `src/App.jsx`.
 
 - Build command: `npm install && npm run build` (it must run `npm run build`, not `vite build`, or pages won't be prerendered)
 - Publish directory: `dist`
-- Real 404s: Render serves `dist/404.html` for missing paths only if no rewrite rule matches, so
-  don't add a catch-all `/* → /index.html` rewrite. Every real page is now its own HTML file.
+- Render serves `dist/services/index.html` at `/services/` but not at `/services`, so every page
+  URL, internal link, canonical, and sitemap entry ends in `/`. Keep it that way for new pages.
+- Keep the dashboard's catch-all `/* → /index.html` rewrite. It makes no-slash URLs like `/services`
+  still work for visitors (the app renders the right page and points the canonical at `/services/`).
+  Without it, those URLs would show the 404 page.
 
 
 ## Prerequisites

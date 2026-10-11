@@ -37,7 +37,7 @@ export function Footer() {
 
                 <nav aria-label="Shop" className={classes.column}>
                     <span className={classes.columnTitle}>Shop</span>
-                    <a href="/lift-rental" className={classes.link}>Lift Rental</a>
+                    <a href="/lift-rental/" className={classes.link}>Lift Rental</a>
                     <a href="/#faq" className={classes.link}>FAQ</a>
                     <a href="/#contact" className={classes.link}>Contact</a>
                     <Group gap={0} mt="xs" className={classes.links}>

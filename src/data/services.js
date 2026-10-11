@@ -247,4 +247,4 @@ export const services = [
     },
 ];
 
-export const servicePath = (service) => `/services/${service.slug}`;
+export const servicePath = (service) => `/services/${service.slug}/`;

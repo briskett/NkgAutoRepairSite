@@ -24,7 +24,7 @@ export function ServicesSection() {
                 </SimpleGrid>
 
                 <Group justify="center" mt="lg">
-                    <a href="/services" className={classes.allLink}>See all services and details →</a>
+                    <a href="/services/" className={classes.allLink}>See all services and details →</a>
                 </Group>
             </Container>
         </section>

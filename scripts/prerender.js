@@ -19,7 +19,7 @@ if (!HEAD_BLOCK.test(template) || !template.includes(ROOT_DIV)) {
 }
 
 const outputs = [
-    ...pages.map((page) => ({ page, file: page.path === '/' ? 'index.html' : `${page.path.slice(1)}/index.html` })),
+    ...pages.map((page) => ({ page, file: page.path === '/' ? 'index.html' : `${page.path.slice(1)}index.html` })),
     { page: notFoundPage, file: '404.html' },
 ];
 

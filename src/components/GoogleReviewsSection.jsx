@@ -110,15 +110,23 @@ export function GoogleReviewsSection() {
                                 <Text className={classes.reviewer}>
                                     - {review.authorAttribution?.displayName || 'Google User'}
                                 </Text>
-                                <Text size="xs" c="dimmed">
-                                    {review.relativePublishTimeDescription || ''}
-                                </Text>
                             </Card>
                         ))}
                     </SimpleGrid>
                 ) : null}
 
                 <Group justify="center" mt="xl">
+                    {placeId ? (
+                        <Button
+                            component="a"
+                            target="_blank"
+                            rel="noreferrer"
+                            href={`https://search.google.com/local/writereview?placeid=${placeId}`}
+                            color="orange"
+                        >
+                            Leave us a review
+                        </Button>
+                    ) : null}
                     <Button
                         component="a"
                         target="_blank"
@@ -127,7 +135,9 @@ export function GoogleReviewsSection() {
                         color="orange"
                         variant="light"
                     >
-                        Read more on Google
+                        {details?.userRatingCount
+                            ? `See all ${details.userRatingCount} reviews on Google`
+                            : 'Read more on Google'}
                     </Button>
                 </Group>
             </Container>

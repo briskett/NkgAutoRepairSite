@@ -11,11 +11,12 @@ const serverEntry = pathToFileURL(path.join(root, 'dist-ssr', 'entry-server.js')
 const { pages, notFoundPage, renderPage, SITE_URL } = await import(serverEntry);
 
 const HEAD_BLOCK = /<!--head:start-->[\s\S]*?<!--head:end-->/;
+const HTML_LANG = /<html lang="[^"]*"/;
 const ROOT_DIV = '<div id="root"></div>';
 
 const template = await fs.readFile(path.join(dist, 'index.html'), 'utf8');
-if (!HEAD_BLOCK.test(template) || !template.includes(ROOT_DIV)) {
-    throw new Error('dist/index.html is missing the <!--head:start--> block or the empty #root div');
+if (!HEAD_BLOCK.test(template) || !HTML_LANG.test(template) || !template.includes(ROOT_DIV)) {
+    throw new Error('dist/index.html is missing <html lang>, the <!--head:start--> block, or the empty #root div');
 }
 
 const outputs = [
@@ -27,6 +28,7 @@ for (const { page, file } of outputs) {
     const { html, head } = renderPage(page);
     // Function replacers so "$" in page text (prices) isn't treated as a replacement pattern.
     const document = template
+        .replace(HTML_LANG, () => `<html lang="${page.lang}"`)
         .replace(HEAD_BLOCK, () => head)
         .replace(ROOT_DIV, () => `<div id="root" data-prerendered="${page.path}">${html}</div>`);
     const target = path.join(dist, file);

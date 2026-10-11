@@ -1,6 +1,8 @@
 import { SITE_URL, business } from './data/business.js';
+import { breadcrumbTrail } from './data/pages.js';
 
 const BUSINESS_ID = `${SITE_URL}/#business`;
+const LOCALES = { en: 'en_US', es: 'es_US' };
 
 const absoluteUrl = (path) => `${SITE_URL}${path}`;
 
@@ -8,11 +10,23 @@ export function buildHead(page) {
     const url = page.noindex ? null : absoluteUrl(page.path);
     const jsonLd = [];
 
+    // hreflang pairs for pages that exist in both languages; English is the default.
+    const alternates = [];
+    if (url && page.alternate) {
+        const english = page.lang === 'es' ? page.alternate : page.path;
+        const spanish = page.lang === 'es' ? page.path : page.alternate;
+        alternates.push(
+            { hreflang: 'en', href: absoluteUrl(english) },
+            { hreflang: 'es', href: absoluteUrl(spanish) },
+            { hreflang: 'x-default', href: absoluteUrl(english) },
+        );
+    }
+
     if (page.breadcrumbs) {
         jsonLd.push({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
-            itemListElement: [{ name: 'Home', path: '/' }, ...page.breadcrumbs].map((crumb, index) => ({
+            itemListElement: breadcrumbTrail(page).map((crumb, index) => ({
                 '@type': 'ListItem',
                 position: index + 1,
                 name: crumb.name,
@@ -34,7 +48,15 @@ export function buildHead(page) {
         });
     }
 
-    return { title: page.title, description: page.description, url, noindex: Boolean(page.noindex), jsonLd };
+    return {
+        title: page.title,
+        description: page.description,
+        url,
+        lang: page.lang ?? 'en',
+        alternates,
+        noindex: Boolean(page.noindex),
+        jsonLd,
+    };
 }
 
 const escapeHtml = (value) =>
@@ -48,7 +70,11 @@ export function renderHeadTags(head) {
         head.noindex
             ? '<meta name="robots" content="noindex" />'
             : `<link rel="canonical" href="${escapeHtml(head.url)}" />`,
+        ...head.alternates.map(
+            (alt) => `<link rel="alternate" hreflang="${alt.hreflang}" href="${escapeHtml(alt.href)}" />`,
+        ),
         '<meta property="og:type" content="website" />',
+        `<meta property="og:locale" content="${LOCALES[head.lang]}" />`,
         `<meta property="og:title" content="${escapeHtml(head.title)}" />`,
         `<meta property="og:description" content="${escapeHtml(head.description)}" />`,
         head.url ? `<meta property="og:url" content="${escapeHtml(head.url)}" />` : null,
@@ -65,6 +91,7 @@ export function renderHeadTags(head) {
 // Client side: keeps the head in sync after in-app navigation, and marks unknown URLs noindex
 // when the host serves another page's HTML for them.
 export function applyHead(head) {
+    document.documentElement.lang = head.lang;
     document.title = head.title;
     setMeta('name', 'description', head.description);
     setMeta('name', 'robots', head.noindex ? 'noindex' : null);

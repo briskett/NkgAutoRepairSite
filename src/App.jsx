@@ -10,6 +10,7 @@ import ServiceDetail from './pages/ServiceDetail.jsx';
 import LiftRental from './pages/LiftRental.jsx';
 import NotFound from './pages/NotFound.jsx';
 import Footer from './components/Footer.jsx';
+import MobileCallBar from './components/MobileCallBar.jsx';
 import './stylesheets/App.css';
 
 const theme = createTheme({
@@ -44,9 +45,14 @@ function App() {
                 <Route path="/services" element={<Services />} />
                 <Route path="/services/:slug" element={<ServiceDetail />} />
                 <Route path="/lift-rental" element={<LiftRental />} />
+                <Route path="/es" element={<Home />} />
+                <Route path="/es/servicios" element={<Services />} />
+                <Route path="/es/servicios/:slug" element={<ServiceDetail />} />
+                <Route path="/es/renta-de-elevador" element={<LiftRental />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
+            <MobileCallBar />
         </MantineProvider>
     );
 }

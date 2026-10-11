@@ -43,7 +43,7 @@
     font-weight: 500;
     font-size: var(--mantine-font-size-sm);
 
-    @media (max-width: $mantine-breakpoint-sm) {
+    @media (max-width: $mantine-breakpoint-md) {
         height: rem(42px);
         width: 100%;
     }
@@ -52,4 +52,9 @@
         color: var(--mantine-color-orange-3);
         background-color: rgba(255, 255, 255, 0.04);
     }
+}
+
+.langLink {
+    color: var(--mantine-color-orange-4);
+    font-weight: 700;
 }

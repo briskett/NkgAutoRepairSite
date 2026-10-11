@@ -1,10 +1,10 @@
 import { useLocation } from 'react-router-dom';
-import { findPage } from '../data/pages.js';
+import { breadcrumbTrail, findPage } from '../data/pages.js';
 import classes from '../stylesheets/ServicesPage.module.css';
 
 export function Breadcrumbs() {
     const { pathname } = useLocation();
-    const trail = [{ name: 'Home', path: '/' }, ...(findPage(pathname).breadcrumbs ?? [])];
+    const trail = breadcrumbTrail(findPage(pathname));
 
     return (
         <nav aria-label="Breadcrumb" className={classes.breadcrumb}>

@@ -4,25 +4,31 @@ import { IconPhone } from '@tabler/icons-react';
 import Breadcrumbs from '../components/Breadcrumbs.jsx';
 import NotFound from './NotFound.jsx';
 import classes from '../stylesheets/ServicesPage.module.css';
-import { business, nearbyNeighborhoods, whyNkg } from '../data/business.js';
-import { services, servicePath } from '../data/services.js';
+import { business, nearbyNeighborhoods } from '../data/business.js';
+import { findServiceBySlug, localizeService, localizedServices } from '../data/services.js';
+import { homePath } from '../data/pages.js';
+import { useLang, useStrings } from '../i18n.js';
 
 export default function ServiceDetail() {
     const { slug } = useParams();
-    const service = services.find((item) => item.slug === slug);
+    const lang = useLang();
+    const strings = useStrings();
+    const t = strings.serviceDetail;
+    const match = findServiceBySlug(slug, lang);
 
-    if (!service) {
+    if (!match) {
         return <NotFound />;
     }
 
-    const otherServices = services.filter((item) => item.slug !== service.slug);
+    const service = localizeService(match, lang);
+    const otherServices = localizedServices(lang).filter((item) => item.path !== service.path);
 
     return (
         <main className={classes.page}>
             <Container size="lg">
                 <Breadcrumbs />
                 <section className={classes.hero}>
-                    <Text className={classes.kicker}>NKG Auto Repair - Bayview, San Francisco</Text>
+                    <Text className={classes.kicker}>{t.kicker}</Text>
                     <Title className={classes.title}>{service.heading}</Title>
                     {service.intro.map((paragraph) => (
                         <Text key={paragraph} className={classes.subtitle} mb="sm">
@@ -36,10 +42,10 @@ export default function ServiceDetail() {
                             color="orange"
                             leftSection={<IconPhone size={16} />}
                         >
-                            Call {business.phoneDisplay}
+                            {t.callNumber(business.phoneDisplay)}
                         </Button>
-                        <Button component="a" href="/#contact" variant="light" color="orange">
-                            Request Estimate
+                        <Button component="a" href={`${homePath(lang)}#contact`} variant="light" color="orange">
+                            {t.requestEstimate}
                         </Button>
                     </Group>
                 </section>
@@ -55,7 +61,7 @@ export default function ServiceDetail() {
                     </Card>
                     <Card className={classes.card} padding="lg">
                         <Group justify="space-between" align="baseline">
-                            <Title order={2} className={classes.sectionTitle}>What we do</Title>
+                            <Title order={2} className={classes.sectionTitle}>{t.whatWeDo}</Title>
                             <Text className={classes.tier}>{service.tier}</Text>
                         </Group>
                         <List className={classes.list} spacing={6}>
@@ -64,13 +70,13 @@ export default function ServiceDetail() {
                             ))}
                         </List>
                         <Text size="sm" c="dimmed" mt="md">
-                            Final cost depends on your vehicle, parts, and labor. You’ll get an estimate before any work begins.
+                            {t.costNote}
                         </Text>
                     </Card>
                 </SimpleGrid>
 
                 <section className={classes.section}>
-                    <Title order={2} className={classes.sectionTitle}>Common questions</Title>
+                    <Title order={2} className={classes.sectionTitle}>{t.faqTitle}</Title>
                     <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
                         {service.faqs.map((faq) => (
                             <div key={faq.q}>
@@ -85,24 +91,24 @@ export default function ServiceDetail() {
                     <Card className={classes.rentalCard}>
                         <SimpleGrid cols={{ base: 1, md: 2 }} spacing="xl">
                             <div>
-                                <Title order={2} className={classes.sectionTitle}>Why drivers choose NKG</Title>
+                                <Title order={2} className={classes.sectionTitle}>{t.whyTitle}</Title>
                                 <List className={classes.list} spacing={6}>
-                                    {whyNkg.map((reason) => (
+                                    {strings.whyNkg.map((reason) => (
                                         <List.Item key={reason}>{reason}</List.Item>
                                     ))}
                                 </List>
                             </div>
                             <div>
-                                <Title order={2} className={classes.sectionTitle}>Visit the shop</Title>
+                                <Title order={2} className={classes.sectionTitle}>{t.visitTitle}</Title>
                                 <Text className={classes.cardBody}>
                                     {business.name}, {business.streetAddress}, {business.city}, {business.region}{' '}
                                     {business.postalCode}
                                 </Text>
                                 <Text className={classes.cardBody}>
-                                    {business.hours}. {business.closed}.
+                                    {strings.hours}. {strings.closed}.
                                 </Text>
                                 <Text className={classes.cardBody} mt="sm">
-                                    We’re in {business.neighborhood}, a short drive from {nearbyNeighborhoods}.
+                                    {t.nearby(business.neighborhood, nearbyNeighborhoods(lang))}
                                 </Text>
                                 <Group mt="md">
                                     <Button
@@ -111,7 +117,7 @@ export default function ServiceDetail() {
                                         color="orange"
                                         leftSection={<IconPhone size={16} />}
                                     >
-                                        Call Now
+                                        {t.callNow}
                                     </Button>
                                     <Button
                                         component="a"
@@ -121,7 +127,7 @@ export default function ServiceDetail() {
                                         variant="light"
                                         color="orange"
                                     >
-                                        Get Directions
+                                        {t.directions}
                                     </Button>
                                 </Group>
                             </div>
@@ -130,10 +136,10 @@ export default function ServiceDetail() {
                 </section>
 
                 <section className={classes.section}>
-                    <Title order={2} className={classes.sectionTitle}>Other services</Title>
+                    <Title order={2} className={classes.sectionTitle}>{t.otherServices}</Title>
                     <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="md">
                         {otherServices.map((item) => (
-                            <Card key={item.slug} component="a" href={servicePath(item)} className={classes.linkCard}>
+                            <Card key={item.path} component="a" href={item.path} className={classes.linkCard}>
                                 <Group justify="space-between">
                                     <Text fw={700} className={classes.cardTitle}>{item.name}</Text>
                                     <Text className={classes.tier}>{item.tier}</Text>

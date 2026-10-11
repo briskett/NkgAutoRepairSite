@@ -2,21 +2,28 @@ import { Button, Container, Group, Text, Title } from '@mantine/core';
 import { IconPhone } from '@tabler/icons-react';
 import classes from '../stylesheets/ServicesPage.module.css';
 import { business } from '../data/business.js';
-import { services, servicePath } from '../data/services.js';
+import { homePath } from '../data/pages.js';
+import { localizedServices } from '../data/services.js';
+import { useLang, useStrings } from '../i18n.js';
 
 export default function NotFound() {
+    const lang = useLang();
+    const t = useStrings().notFound;
+
     return (
         <main className={classes.page}>
             <Container size="lg">
                 <section className={classes.hero}>
                     <Text className={classes.kicker}>404</Text>
-                    <Title className={classes.title}>Page not found</Title>
+                    <Title className={classes.title}>{t.title}</Title>
                     <Text className={classes.subtitle}>
-                        We couldn’t find that page. Here’s where you can go instead:
+                        {t.body}
                     </Text>
                     <Group mt="lg">
-                        <Button component="a" href="/" color="orange">Home</Button>
-                        <Button component="a" href="/services/" variant="light" color="orange">All Services</Button>
+                        <Button component="a" href={homePath(lang)} color="orange">{t.home}</Button>
+                        <Button component="a" href={lang === 'es' ? '/es/servicios/' : '/services/'} variant="light" color="orange">
+                            {t.allServices}
+                        </Button>
                         <Button
                             component="a"
                             href={`tel:${business.phone}`}
@@ -28,8 +35,8 @@ export default function NotFound() {
                         </Button>
                     </Group>
                     <Group mt="xl" gap="lg">
-                        {services.map((service) => (
-                            <a key={service.slug} href={servicePath(service)} className={classes.inlineLink}>
+                        {localizedServices(lang).map((service) => (
+                            <a key={service.path} href={service.path} className={classes.inlineLink}>
                                 {service.name}
                             </a>
                         ))}

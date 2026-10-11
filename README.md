@@ -33,6 +33,18 @@ Marketing site for **NKG Auto Repair**, an auto repair shop in Bayview–Hunters
 In the browser, `src/main.jsx` hydrates the prerendered HTML. On the dev server (no prerendering)
 it renders from scratch as before.
 
+### Spanish pages
+
+Every page has a Spanish version under `/es/` (for example `/services/brake-repair/` ↔
+`/es/servicios/frenos/`), linked with hreflang tags and the Español/English switch in the header.
+
+- Interface text for both languages: `src/data/strings.js`
+- Service page copy: the `spanish` block in `src/data/services.js`
+- Spanish page titles and descriptions: `spanishPages` in `src/data/pages.js`
+
+Components read the language from the URL with `useLang()` / `useStrings()` from `src/i18n.js`.
+Contact form messages from Spanish pages arrive with "[Español]" in the subject.
+
 ### Adding or editing a service
 
 Service copy lives in `src/data/services.js`. Adding an entry there creates the page, its card on

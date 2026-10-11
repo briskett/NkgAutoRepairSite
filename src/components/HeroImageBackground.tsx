@@ -2,8 +2,10 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { Button, Container, Overlay, Text, Title } from '@mantine/core';
 import classes from '../stylesheets/HeroImageBackground.module.css';
+import { useStrings } from '../i18n.js';
 
 export function HeroImageBackground() {
+    const t = useStrings().hero;
     const [activeSlide, setActiveSlide] = useState(0);
     const totalSlides = 3;
 
@@ -23,16 +25,17 @@ export function HeroImageBackground() {
         <Overlay color="#000" opacity={0.5} zIndex={1} />
 
     <div className={classes.inner}>
+    {t.badge ? <Text className={classes.badge}>{t.badge}</Text> : null}
     <Title order={1} className={classes.title}>
-        NKG Auto Repair, Bayview-Hunters Point{' '}
+        {t.titleStart}{' '}
         <Text component="span" inherit className={classes.highlight}>
-            Serving Since 2009!
+            {t.titleHighlight}
         </Text>
     </Title>
 
     <Container size={640}>
     <Text size="lg" className={classes.description}>
-        Oil changes, brake repair, engine diagnostics, transmission, suspension, and A/C repair—serving San Francisco drivers with transparent estimates since 2009.
+        {t.description}
     </Text>
     </Container>
 
@@ -43,7 +46,7 @@ export function HeroImageBackground() {
         className={classes.control}
         size="lg"
     >
-        Call Now
+        {t.call}
     </Button>
     <Button className={classes.control} size="lg" onClick={() => {
         const contactEl = document.getElementById('contact');
@@ -51,7 +54,7 @@ export function HeroImageBackground() {
             contactEl.scrollIntoView({ behavior: 'smooth' });
         }
     }} >
-        Contact Us!
+        {t.contact}
     </Button>
 
     </div>

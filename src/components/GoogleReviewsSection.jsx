@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Button, Card, Container, Group, Loader, SimpleGrid, Text, Title } from '@mantine/core';
 import { IconStarFilled } from '@tabler/icons-react';
 import classes from '../stylesheets/GoogleReviewsSection.module.css';
+import { useStrings } from '../i18n.js';
 
 function buildStars(rating = 0) {
     const fullStars = Math.round(rating);
@@ -9,6 +10,7 @@ function buildStars(rating = 0) {
 }
 
 export function GoogleReviewsSection() {
+    const t = useStrings().reviews;
     const apiKey = import.meta.env.VITE_GOOGLE_PLACES_API_KEY;
     const placeId = import.meta.env.VITE_GOOGLE_PLACE_ID;
     const [loading, setLoading] = useState(true);
@@ -17,7 +19,7 @@ export function GoogleReviewsSection() {
 
     useEffect(() => {
         if (!apiKey || !placeId) {
-            setError('Google reviews are not configured yet.');
+            setError('notConfigured');
             setLoading(false);
             return;
         }
@@ -43,7 +45,7 @@ export function GoogleReviewsSection() {
                 const payload = await response.json();
                 setDetails(payload);
             } catch (err) {
-                setError('Unable to load Google reviews right now.');
+                setError('loadFailed');
                 // Keep logging for quick debugging in dev.
                 console.error(err);
             } finally {
@@ -67,8 +69,8 @@ export function GoogleReviewsSection() {
             <Container size="lg">
                 <Group justify="space-between" align="end" mb="lg">
                     <div>
-                        <Title order={2} className={classes.title}>Customer Reviews</Title>
-                        <Text className={classes.subtitle}>Pulled live from Google</Text>
+                        <Title order={2} className={classes.title}>{t.title}</Title>
+                        <Text className={classes.subtitle}>{t.subtitle}</Text>
                     </div>
                     {details?.rating ? (
                         <div className={classes.summary}>
@@ -77,7 +79,7 @@ export function GoogleReviewsSection() {
                                 <Text fw={700} size="xl">{details.rating.toFixed(1)}</Text>
                             </Group>
                             <Text size="sm" c="dimmed">
-                                {details.userRatingCount ?? 0} Google reviews
+                                {t.count(details.userRatingCount ?? 0)}
                             </Text>
                         </div>
                     ) : null}
@@ -89,7 +91,7 @@ export function GoogleReviewsSection() {
 
                 {!loading && error ? (
                     <Card className={classes.fallbackCard}>
-                        <Text>{error}</Text>
+                        <Text>{t[error]}</Text>
                         <Text size="sm" c="dimmed" mt={6}>
                             Add `VITE_GOOGLE_PLACES_API_KEY` and `VITE_GOOGLE_PLACE_ID` to your `.env` file.
                         </Text>
@@ -124,7 +126,7 @@ export function GoogleReviewsSection() {
                             href={`https://search.google.com/local/writereview?placeid=${placeId}`}
                             color="orange"
                         >
-                            Leave us a review
+                            {t.leaveReview}
                         </Button>
                     ) : null}
                     <Button
@@ -135,9 +137,7 @@ export function GoogleReviewsSection() {
                         color="orange"
                         variant="light"
                     >
-                        {details?.userRatingCount
-                            ? `See all ${details.userRatingCount} reviews on Google`
-                            : 'Read more on Google'}
+                        {details?.userRatingCount ? t.seeAll(details.userRatingCount) : t.readMore}
                     </Button>
                 </Group>
             </Container>

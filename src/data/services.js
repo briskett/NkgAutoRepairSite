@@ -1,6 +1,7 @@
-// Each entry becomes a page at /services/<slug> and a card on the home and services pages.
-// Only claim what the shop actually does: if a service or detail changes, update it here.
-export const services = [
+// Each entry becomes a page at /services/<slug> (and /es/servicios/<es slug>) and a card on the
+// home and services pages. Only claim what the shop actually does: if a service or detail
+// changes, update it here and in the Spanish copy below.
+const englishServices = [
     {
         slug: 'oil-change',
         name: 'Oil Changes',
@@ -247,4 +248,263 @@ export const services = [
     },
 ];
 
-export const servicePath = (service) => `/services/${service.slug}/`;
+// Spanish copy for /es/servicios/<slug>/, keyed by the English slug.
+const spanish = {
+    'oil-change': {
+        slug: 'cambio-de-aceite',
+        name: 'Cambio de aceite',
+        cardTitle: 'Cambio de aceite en Bayview',
+        summary:
+            'El cambio de aceite y filtro protege su motor y mantiene su carro confiable día a día. Ideal para quienes manejan todos los días por Bayview y San Francisco.',
+        heading: 'Cambio de aceite en Bayview, San Francisco',
+        metaTitle: 'Cambio de aceite en San Francisco | NKG Auto Repair',
+        metaDescription:
+            'Cambio de aceite y filtro sin cita en NKG Auto Repair, Bayview-Hunters Point, San Francisco. La mayoría se hacen el mismo día. Lun–Sáb, 8am–5pm. Se habla español.',
+        intro: [
+            'El aceite limpio es la protección más barata para su motor. Sacamos el aceite usado, cambiamos el filtro y lo llenamos con el tipo y la cantidad de aceite que pide su vehículo.',
+            'El cambio de aceite es uno de los trabajos que más hacemos sin cita. Venga a nuestro taller en Bayview-Hunters Point en cualquier momento durante nuestro horario. No necesita cita, y la mayoría de los cambios de aceite se hacen el mismo día.',
+        ],
+        signsTitle: 'Señales de que ya le toca un cambio de aceite',
+        signs: [
+            'Se encendió el aviso de cambio de aceite o la luz de mantenimiento',
+            'Ya llegó o pasó el millaje de la etiqueta de su último cambio',
+            'El aceite de la varilla se ve oscuro y arenoso, o el nivel está bajo',
+            'Huele a aceite quemado o ve una fuga debajo del carro',
+        ],
+        included: [
+            'Sacamos el aceite usado y cambiamos el filtro',
+            'Llenamos con el tipo y la cantidad correcta de aceite para su motor',
+            'Reiniciamos el aviso de cambio de aceite si su vehículo lo tiene',
+            'Le avisamos si vemos algo que necesite atención, sin presión',
+        ],
+        faqs: [
+            {
+                q: '¿Necesito cita para un cambio de aceite?',
+                a: 'No. Atendemos principalmente por orden de llegada, así que puede venir de lunes a sábado, de 8 a.m. a 5 p.m. Si prefiere planearlo, con gusto le damos una cita.',
+            },
+            {
+                q: '¿Cada cuánto debo cambiar el aceite?',
+                a: 'Siga el intervalo que indica el manual de su vehículo o el monitor de vida del aceite. Depende del vehículo, del aceite que usa y de cómo maneja. Los viajes cortos y el tráfico de la ciudad cuentan como uso más pesado. Si no está seguro, pregúntenos.',
+            },
+        ],
+    },
+    'brake-repair': {
+        slug: 'frenos',
+        name: 'Reparación de frenos',
+        cardTitle: 'Frenos y revisión de seguridad',
+        summary:
+            'Pastillas (balatas), discos y revisión del líquido de frenos, con recomendaciones pensando en su seguridad. Si sus frenos rechinan, raspan o se sienten suaves, los revisamos rápido.',
+        heading: 'Reparación de frenos en Bayview, San Francisco',
+        metaTitle: 'Reparación de frenos en San Francisco | NKG Auto Repair',
+        metaDescription:
+            'Pastillas (balatas), discos y revisión de frenos en NKG Auto Repair, Bayview, San Francisco. Presupuesto claro antes de cualquier trabajo. Se habla español.',
+        intro: [
+            'Las subidas de San Francisco y el tráfico de la ciudad desgastan los frenos. Si los suyos rechinan, raspan o se sienten suaves, tráiganos el carro y averiguamos por qué antes de que empeore.',
+            'Revisamos las pastillas, los discos y el líquido de frenos, le explicamos lo que encontramos y le damos un presupuesto claro antes de empezar cualquier trabajo. El cambio de pastillas normalmente se hace el mismo día.',
+        ],
+        signsTitle: 'Señales de que sus frenos necesitan atención',
+        signs: [
+            'Rechinan o chillan al frenar',
+            'Hacen un ruido de raspado o de metal contra metal',
+            'El pedal se siente suave, esponjoso o se va hasta abajo',
+            'El carro se jala hacia un lado al frenar',
+            'Vibra el pedal o el volante al detenerse',
+            'Está encendida la luz de advertencia de frenos',
+        ],
+        included: [
+            'Revisión de frenos: pastillas, discos y líquido de frenos',
+            'Cambio de pastillas (balatas)',
+            'Cambio de discos cuando hace falta',
+            'Una explicación clara de lo que es urgente y lo que puede esperar',
+        ],
+        faqs: [
+            {
+                q: '¿Es seguro manejar si mis frenos rechinan?',
+                a: 'El rechinido puede venir de pastillas gastadas, del indicador de desgaste o simplemente de polvo y humedad. Un ruido de raspado, un pedal suave o una luz de advertencia son más serios. Si nota cualquiera de estos, haga revisar sus frenos lo antes posible.',
+            },
+            {
+                q: '¿Pueden cambiar las pastillas el mismo día?',
+                a: 'Normalmente, sí. El cambio de pastillas de freno es uno de los trabajos comunes que casi siempre terminamos el mismo día en que trae el carro.',
+            },
+        ],
+    },
+    'engine-diagnostics': {
+        slug: 'diagnostico-de-motor',
+        name: 'Diagnóstico de motor',
+        cardTitle: 'Diagnóstico de motor',
+        summary:
+            'Diagnóstico de la luz de “check engine” y de fallas de manejo, con explicaciones claras. Buscamos la causa real para que no pague por adivinanzas.',
+        heading: 'Luz de “check engine” y diagnóstico de motor en San Francisco',
+        metaTitle: 'Diagnóstico de luz check engine en SF | NKG Auto Repair',
+        metaDescription:
+            '¿Se prendió la luz de check engine? NKG Auto Repair en Bayview, San Francisco encuentra la causa real y se la explica claramente antes de reparar. Se habla español.',
+        intro: [
+            'La luz de “check engine” puede significar desde un tapón de gasolina flojo hasta un problema que necesita atención inmediata. Leer el código es el primer paso. Encontrar la causa real es el verdadero trabajo.',
+            'Escaneamos la computadora de su vehículo, probamos los sistemas involucrados y le explicamos la falla con palabras sencillas. Recibe un presupuesto claro antes de cualquier reparación, para que no pague por adivinanzas.',
+        ],
+        signsTitle: 'Cuándo traer su carro',
+        signs: [
+            'La luz de “check engine” está encendida o parpadeando',
+            'El motor tiembla en marcha mínima, falla o titubea al acelerar',
+            'Le cuesta arrancar o se apaga solo',
+            'Rinde menos la gasolina que de costumbre',
+            'Ruidos, olores o humo que antes no había',
+        ],
+        included: [
+            'Escaneo de la computadora para leer los códigos de falla',
+            'Pruebas para confirmar la causa en vez de adivinar con piezas',
+            'Una explicación sencilla de lo que encontramos',
+            'Un presupuesto claro antes de cualquier reparación',
+        ],
+        faqs: [
+            {
+                q: '¿Es más grave si la luz de check engine parpadea?',
+                a: 'Por lo general, sí. Una luz que parpadea muchas veces indica una falla de encendido activa, que puede dañar el convertidor catalítico. Evite manejar fuerte y hágalo revisar pronto.',
+            },
+            {
+                q: '¿No basta con que me lean el código en una tienda de autopartes?',
+                a: 'El código le dice qué sistema reportó un problema, pero no siempre qué pieza falló. Un diagnóstico incluye pruebas para confirmar la causa, así solo paga por la reparación que de verdad necesita.',
+            },
+        ],
+    },
+    'transmission-service': {
+        slug: 'transmision',
+        name: 'Servicio de transmisión',
+        cardTitle: 'Servicio de transmisión',
+        summary:
+            'Revisión de la transmisión, servicio de líquido y plan de reparación. Le explicamos los siguientes pasos y qué tan urgente es, para que tome la mejor decisión.',
+        heading: 'Servicio de transmisión en San Francisco',
+        metaTitle: 'Servicio de transmisión en San Francisco | NKG Auto Repair',
+        metaDescription:
+            'Revisión de transmisión, servicio de líquido y plan de reparación en NKG Auto Repair, Bayview, San Francisco. Respuestas honestas sobre urgencia y opciones.',
+        intro: [
+            'Los problemas de transmisión casi nunca se arreglan solos, y detectarlos a tiempo le puede ahorrar dinero. Revisamos la transmisión y el líquido, y buscamos fugas.',
+            'Después le explicamos qué está pasando, qué tan urgente es y cuáles son sus opciones, para que tome la mejor decisión para su vehículo y su presupuesto.',
+        ],
+        signsTitle: 'Señales de problemas de transmisión',
+        signs: [
+            'Patina, o el motor se acelera sin que el carro avance',
+            'Cambios bruscos, tardados o duros',
+            'Fuga de líquido rojo o café debajo del carro',
+            'Olor a quemado',
+            'Zumbidos, golpes o chillidos',
+            'Luz de advertencia de transmisión o de check engine',
+        ],
+        included: [
+            'Revisión y diagnóstico de la transmisión',
+            'Revisión del nivel y estado del líquido',
+            'Servicio de líquido de transmisión',
+            'Revisión de fugas',
+            'Un plan de reparación con presupuesto claro',
+        ],
+        faqs: [
+            {
+                q: '¿Necesito cambiar el líquido de la transmisión?',
+                a: 'Revise el intervalo recomendado en el manual de su vehículo. Si no está seguro, podemos revisar el nivel y el estado del líquido y decirle si conviene hacer el servicio.',
+            },
+            {
+                q: '¿Qué hago si mi transmisión está patinando?',
+                a: 'Maneje lo menos posible y hágala revisar pronto. El patinado normalmente empeora con el uso, y un diagnóstico a tiempo le deja más opciones.',
+            },
+        ],
+    },
+    'suspension-steering': {
+        slug: 'suspension-y-direccion',
+        name: 'Suspensión y dirección',
+        cardTitle: 'Suspensión y dirección',
+        summary:
+            'Revisamos amortiguadores, struts, brazos de control y piezas de la dirección para devolverle comodidad, control y seguridad en la ciudad.',
+        heading: 'Reparación de suspensión y dirección en San Francisco',
+        metaTitle: 'Suspensión y dirección en San Francisco | NKG Auto Repair',
+        metaDescription:
+            'Amortiguadores, struts, brazos de control y reparación de dirección en NKG Auto Repair, Bayview, San Francisco. Le mostramos lo que está gastado antes de trabajar.',
+        intro: [
+            'Los baches, las subidas y las calles en mal estado desgastan la suspensión. Los amortiguadores, struts y piezas de la dirección gastados hacen el manejo más incómodo y pueden afectar el control y el frenado.',
+            'Revisamos sus amortiguadores, struts, brazos de control y piezas de la dirección, le mostramos lo que está gastado y le damos un presupuesto claro antes de cualquier trabajo.',
+        ],
+        signsTitle: 'Señales de suspensión o dirección gastada',
+        signs: [
+            'Golpeteo o ruidos secos al pasar por baches',
+            'El carro rebota o se siente flotando',
+            'La dirección se siente floja o el carro no va derecho',
+            'El carro se jala hacia un lado',
+            'Desgaste disparejo de las llantas',
+            'Una esquina del carro se ve más baja que las otras',
+        ],
+        included: [
+            'Revisión de suspensión y dirección',
+            'Cambio de amortiguadores y struts',
+            'Reparación de brazos de control y bujes',
+            'Reparación de piezas de la dirección',
+        ],
+        faqs: [
+            {
+                q: '¿Cómo sé si necesito amortiguadores o struts nuevos?',
+                a: 'Las señales más comunes son que el carro rebota, se clava de frente al frenar, golpea en los baches o gasta las llantas de forma dispareja. Podemos revisarlos y decirle lo que encontramos.',
+            },
+            {
+                q: '¿Es seguro manejar con la suspensión gastada?',
+                a: 'Las piezas gastadas de la suspensión y la dirección pueden afectar el control y la distancia de frenado, y algunas fallas son graves. Si escucha golpes o siente la dirección floja, hágala revisar pronto.',
+            },
+        ],
+    },
+    'auto-ac-repair': {
+        slug: 'aire-acondicionado',
+        name: 'Reparación de aire acondicionado',
+        cardTitle: 'Aire acondicionado del carro',
+        summary:
+            'Diagnóstico y reparación del aire acondicionado cuando enfría poco, tiene fugas o falla el compresor. Manténgase cómodo en los días calurosos de San Francisco.',
+        heading: 'Reparación de aire acondicionado en Bayview, San Francisco',
+        metaTitle: 'Reparación de aire acondicionado en SF | NKG Auto Repair',
+        metaDescription:
+            '¿El aire de su carro echa aire caliente? NKG Auto Repair en Bayview, San Francisco diagnostica fugas, compresor y fallas eléctricas y le explica la reparación.',
+        intro: [
+            'Cuando el aire acondicionado echa aire caliente, la causa casi siempre es una fuga, una pieza que está fallando o un problema eléctrico. Recargarlo sin encontrar la fuga solo le da un poco de tiempo.',
+            'Averiguamos por qué no enfría, le explicamos la falla y le damos un presupuesto claro antes de cualquier reparación. La mayoría de los carros también usan el aire acondicionado para desempañar el parabrisas, así que un sistema que funcione importa incluso en los días frescos de San Francisco.',
+        ],
+        signsTitle: 'Señales de que su aire acondicionado necesita reparación',
+        signs: [
+            'Echa aire caliente o apenas fresco',
+            'Enfría a ratos',
+            'Sale poco aire por las rejillas',
+            'Huele a humedad cuando lo prende',
+            'Hace ruido al encenderlo',
+            'Las ventanas tardan en desempañarse',
+        ],
+        included: [
+            'Diagnóstico del sistema de aire acondicionado',
+            'Detección de fugas',
+            'Reparación del compresor y otras piezas',
+            'Recarga una vez que el sistema está sellado',
+        ],
+        faqs: [
+            {
+                q: '¿Por qué el aire de mi carro echa aire caliente?',
+                a: 'Las causas más comunes son una fuga de refrigerante, un compresor o clutch que está fallando, o un problema eléctrico como un fusible, un relevador o un sensor. El diagnóstico nos dice cuál es.',
+            },
+            {
+                q: '¿No basta con recargar el aire?',
+                a: 'Si al sistema le falta refrigerante, hay una fuga en algún lado. Recargarlo sin reparar la fuga normalmente significa que pronto volverá a echar aire caliente, por eso primero encontramos la fuga.',
+            },
+        ],
+    },
+};
+
+export const services = englishServices.map((service) => ({ ...service, es: spanish[service.slug] }));
+
+export const servicePath = (service, lang = 'en') =>
+    lang === 'es' ? `/es/servicios/${service.es.slug}/` : `/services/${service.slug}/`;
+
+// A service's copy in one language, plus its page path and the path of its translation.
+export const localizeService = (service, lang) => ({
+    ...service,
+    ...(lang === 'es' ? service.es : {}),
+    path: servicePath(service, lang),
+    alternatePath: servicePath(service, lang === 'es' ? 'en' : 'es'),
+});
+
+export const localizedServices = (lang) => services.map((service) => localizeService(service, lang));
+
+export const findServiceBySlug = (slug, lang) =>
+    services.find((service) => (lang === 'es' ? service.es.slug : service.slug) === slug);
+

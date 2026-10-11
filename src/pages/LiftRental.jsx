@@ -4,21 +4,22 @@ import { IconMail, IconPhone } from '@tabler/icons-react';
 import Breadcrumbs from '../components/Breadcrumbs.jsx';
 import classes from '../stylesheets/ServicesPage.module.css';
 import { business } from '../data/business.js';
+import { useStrings } from '../i18n.js';
 import liftSpace1 from '../assets/rental/lift-space-1.jpg';
 import liftSpace2 from '../assets/rental/lift-space-2.jpg';
 
 export default function LiftRental() {
+    const t = useStrings().liftRental;
+
     return (
         <main className={classes.page}>
             <Container size="lg">
                 <Breadcrumbs />
                 <section className={classes.hero}>
-                    <Text className={classes.kicker}>Shop Space - Bayview-Hunters Point, San Francisco</Text>
-                    <Title className={classes.title}>Mechanic Lift Rental in San Francisco</Title>
+                    <Text className={classes.kicker}>{t.kicker}</Text>
+                    <Title className={classes.title}>{t.title}</Title>
                     <Text className={classes.subtitle}>
-                        Need a lift without signing a commercial lease? We have a dedicated lift open at our
-                        Bayview-Hunters Point shop, a good fit for an independent or mobile mechanic who wants
-                        reliable indoor space to work.
+                        {t.subtitle}
                     </Text>
                 </section>
 
@@ -33,26 +34,23 @@ export default function LiftRental() {
                                 classNames={{ indicator: classes.carouselIndicator }}
                             >
                                 <Carousel.Slide>
-                                    <img src={liftSpace1} alt="Dedicated lift available for rent at NKG Auto Repair" className={classes.rentalImage} />
+                                    <img src={liftSpace1} alt={t.liftAlt} className={classes.rentalImage} />
                                 </Carousel.Slide>
                                 <Carousel.Slide>
-                                    <img src={liftSpace2} alt="Shop floor at NKG Auto Repair, Bayview-Hunters Point" className={classes.rentalImage} />
+                                    <img src={liftSpace2} alt={t.floorAlt} className={classes.rentalImage} />
                                 </Carousel.Slide>
                             </Carousel>
 
                             <div>
-                                <Title order={2} className={classes.rentalTitle}>What you get</Title>
+                                <Title order={2} className={classes.rentalTitle}>{t.includedTitle}</Title>
                                 <List className={classes.rentalList} mb="lg">
-                                    <List.Item>Dedicated lift, full-time access</List.Item>
-                                    <List.Item>Power, air compressor, and lighting included</List.Item>
-                                    <List.Item>Monday-Saturday, 8am-5pm</List.Item>
-                                    <List.Item>Bring your own tools</List.Item>
-                                    <List.Item>No commercial lease</List.Item>
+                                    {t.included.map((item) => (
+                                        <List.Item key={item}>{item}</List.Item>
+                                    ))}
                                 </List>
-                                <Text className={classes.rentalPrice} mb="md">$150/day or $2,000/month</Text>
+                                <Text className={classes.rentalPrice} mb="md">{t.price}</Text>
                                 <Text className={classes.cardBody} mb="md">
-                                    Call or text to ask about availability or to come see the space at{' '}
-                                    {business.streetAddress}, {business.city}.
+                                    {t.contactText(`${business.streetAddress}, ${business.city}`)}
                                 </Text>
                                 <Group>
                                     <Button
@@ -61,16 +59,16 @@ export default function LiftRental() {
                                         color="orange"
                                         leftSection={<IconPhone size={16} />}
                                     >
-                                        Call or Text
+                                        {t.call}
                                     </Button>
                                     <Button
                                         component="a"
-                                        href={`mailto:${business.email}?subject=Lift%20rental`}
+                                        href={`mailto:${business.email}?subject=${encodeURIComponent(t.emailSubject)}`}
                                         variant="light"
                                         color="orange"
                                         leftSection={<IconMail size={16} />}
                                     >
-                                        Email
+                                        {t.email}
                                     </Button>
                                 </Group>
                             </div>

@@ -1,15 +1,18 @@
 import { Container, Text, Title } from '@mantine/core';
 import classes from '../stylesheets/MapSection.module.css';
+import { useStrings } from '../i18n.js';
 
 export function MapSection() {
+    const t = useStrings().map;
+
     return (
         <section className={classes.section} id="location">
             <Container size="lg">
-                <Title order={2} className={classes.title}>Find Us</Title>
+                <Title order={2} className={classes.title}>{t.title}</Title>
                 <Text className={classes.subtitle}>NKG Auto Repair, 1400 Carroll Ave, San Francisco, CA</Text>
                 <div className={classes.mapWrap}>
                     <iframe
-                        title="NKG Auto Repair location"
+                        title={t.frameTitle}
                         className={classes.map}
                         loading="lazy"
                         allowFullScreen

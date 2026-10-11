@@ -1,6 +1,7 @@
 import { IconUsersGroup, IconCoin, IconScan } from '@tabler/icons-react';
 import { Container, SimpleGrid, Text } from '@mantine/core';
 import classes from '../stylesheets/FeaturesAsymmetrical.module.css';
+import { useStrings } from '../i18n.js';
 
 interface FeatureProps extends React.ComponentPropsWithoutRef<'div'> {
     icon: React.FC<any>;
@@ -24,30 +25,12 @@ function Feature({ icon: Icon, title, description, className, ...others }: Featu
     );
 }
 
-const mockdata = [
-    {
-        icon: IconCoin,
-        title: 'Affordable Pricing',
-        description:
-            'We offer a wide range of services at affordable prices, so you can get the care you' +
-            ' need without breaking the bank.',
-    },
-    {
-        icon: IconScan,
-        title: 'Transparent Estimates',
-        description:
-            'Clear pricing before any work begins. No pressure, no upsells, and no surprise charges.',
-    },
-    {
-        icon: IconUsersGroup,
-        title: 'Local, Family-Owned',
-        description:
-            'Proudly serving San Francisco with care and integrity since 2009. We are a local, family-owned business.',
-    },
-];
+const icons = [IconCoin, IconScan, IconUsersGroup];
 
 export function FeaturesAsymmetrical() {
-    const items = mockdata.map((item) => <Feature {...item} key={item.title} />);
+    const items = useStrings().features.map((item, index) => (
+        <Feature {...item} icon={icons[index]} key={item.title} />
+    ));
 
     return (
         <Container mt={30} mb={30} size="lg">

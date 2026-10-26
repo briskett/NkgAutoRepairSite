@@ -4,6 +4,7 @@ import { IconMail, IconPhone } from '@tabler/icons-react';
 import Breadcrumbs from '../components/Breadcrumbs.jsx';
 import classes from '../stylesheets/ServicesPage.module.css';
 import { business } from '../data/business.js';
+import { liftRentalFaqs } from '../data/faqs.js';
 import liftSpace1 from '../assets/rental/lift-space-1.jpg';
 import liftSpace2 from '../assets/rental/lift-space-2.jpg';
 
@@ -33,10 +34,10 @@ export default function LiftRental() {
                                 classNames={{ indicator: classes.carouselIndicator }}
                             >
                                 <Carousel.Slide>
-                                    <img src={liftSpace1} alt="Dedicated lift available for rent at NKG Auto Repair" className={classes.rentalImage} />
+                                    <img src={liftSpace1} alt="Dedicated lift available for rent at NKG Auto Repair" width={1000} height={750} className={classes.rentalImage} />
                                 </Carousel.Slide>
                                 <Carousel.Slide>
-                                    <img src={liftSpace2} alt="Shop floor at NKG Auto Repair, Bayview-Hunters Point" className={classes.rentalImage} />
+                                    <img src={liftSpace2} alt="Shop floor at NKG Auto Repair, Bayview-Hunters Point" width={1000} height={750} loading="lazy" className={classes.rentalImage} />
                                 </Carousel.Slide>
                             </Carousel>
 
@@ -76,6 +77,18 @@ export default function LiftRental() {
                             </div>
                         </SimpleGrid>
                     </Card>
+                </section>
+
+                <section className={classes.section}>
+                    <Title order={2} className={classes.sectionTitle}>Common questions</Title>
+                    <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg">
+                        {liftRentalFaqs.map((faq) => (
+                            <div key={faq.q}>
+                                <Title order={3} className={classes.faqQuestion}>{faq.q}</Title>
+                                <Text className={classes.cardBody}>{faq.a}</Text>
+                            </div>
+                        ))}
+                    </SimpleGrid>
                 </section>
             </Container>
         </main>

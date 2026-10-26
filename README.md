@@ -18,8 +18,13 @@ Marketing site for **NKG Auto Repair**, an auto repair shop in Bayview–Hunters
 - Home, Services, one page per service (`/services/<slug>`), and Lift Rental pages
 - Contact form (EmailJS)
 - SEO: every page is prerendered to static HTML at build time with its own title, description,
-  canonical URL, Open Graph tags, and JSON-LD (`AutoRepair` on every page, plus `Service` and
-  `BreadcrumbList` where relevant). `sitemap.xml` and `404.html` are generated from the page list.
+  canonical URL, Open Graph tags, and JSON-LD (`AutoRepair` on every page, plus `Service`,
+  `FAQPage`, and `BreadcrumbList` where relevant), all generated in `src/seo.js` from
+  `src/data/`. `sitemap.xml` and `404.html` are generated from the page list.
+- FAQ answers live in `src/data/faqs.js` (home and lift rental) and `src/data/services.js` (per
+  service). The same text is shown on the page and emitted as `FAQPage` JSON-LD, so edit it there.
+- `public/llms.txt` is a plain-text summary of the shop for AI assistants. It repeats the hours,
+  address, and services, so update it when those change.
 
 ## How pages are built
 
@@ -45,9 +50,19 @@ in `src/data/pages.js` and a `<Route>` in `src/App.jsx`.
 - Publish directory: `dist`
 - Render serves `dist/services/index.html` at `/services/` but not at `/services`, so every page
   URL, internal link, canonical, and sitemap entry ends in `/`. Keep it that way for new pages.
-- Keep the dashboard's catch-all `/* → /index.html` rewrite. It makes no-slash URLs like `/services`
-  still work for visitors (the app renders the right page and points the canonical at `/services/`).
-  Without it, those URLs would show the 404 page.
+- Redirects/Rewrites in the Render dashboard should be, in this order:
+
+  | Source            | Destination         | Action   |
+  | ----------------- | ------------------- | -------- |
+  | `/services`       | `/services/`        | Redirect |
+  | `/lift-rental`    | `/lift-rental/`     | Redirect |
+  | `/services/:slug` | `/services/:slug/`  | Redirect |
+
+  and there should be **no** catch-all `/* → /index.html` rewrite. Every page is prerendered, so
+  nothing needs it, and with it unknown URLs return the homepage HTML (canonical `/`) with a 200
+  status instead of `404.html`, which search engines treat as soft 404s and duplicates.
+  Check with `curl -sI https://nkgautorepair.com/services` (expect 301 to `/services/`) and
+  `curl -s -o /dev/null -w "%{http_code}" https://nkgautorepair.com/nope/` (expect 404).
 
 
 ## Prerequisites
@@ -74,7 +89,7 @@ Open the URL Vite prints (usually `http://localhost:5173`).
 
 ## Project layout
 
-- `index.html` — Document head template and `AutoRepair` schema
+- `index.html` — Document head template (per-page tags and JSON-LD are filled in at build time)
 - `src/main.jsx` — Browser entry (hydrates prerendered pages)
 - `src/entry-server.jsx` — Build-time render entry used by `scripts/prerender.js`
 - `src/App.jsx` — Routes, Mantine theme, layout shell

@@ -3,6 +3,7 @@ import { IconPhone } from '@tabler/icons-react';
 import Breadcrumbs from '../components/Breadcrumbs.jsx';
 import classes from '../stylesheets/ServicesPage.module.css';
 import liftSpace1 from '../assets/rental/lift-space-1.jpg';
+import { business } from '../data/business.js';
 import { services, servicePath } from '../data/services.js';
 
 export default function Services() {
@@ -12,14 +13,14 @@ export default function Services() {
                 <Breadcrumbs />
                 <section className={classes.hero}>
                     <Text className={classes.kicker}>NKG Auto Repair - Bayview, San Francisco</Text>
-                    <Title className={classes.title}>Auto Repair Services in Bayview</Title>
+                    <Title className={classes.title}>Car Repair and Maintenance Services in San Francisco</Title>
                     <Text className={classes.subtitle}>
                         Trusted local auto shop offering transparent estimates, honest diagnostics, and quality repairs for drivers across Bayview-Hunters Point and greater San Francisco.
                     </Text>
                     <Group mt="lg">
                         <Button
                             component="a"
-                            href="tel:+14152397450"
+                            href={`tel:${business.phone}`}
                             color="orange"
                             leftSection={<IconPhone size={16} />}
                         >
@@ -49,7 +50,7 @@ export default function Services() {
                 <section className={classes.rentalSection}>
                     <Card className={classes.rentalCard}>
                         <SimpleGrid cols={{ base: 1, md: 2 }} spacing="xl" verticalSpacing="lg">
-                            <img src={liftSpace1} alt="Dedicated lift available for rent at NKG Auto Repair" className={classes.rentalImage} />
+                            <img src={liftSpace1} alt="Dedicated lift available for rent at NKG Auto Repair" width={1000} height={750} loading="lazy" className={classes.rentalImage} />
                             <div>
                                 <Text className={classes.kicker}>Shop Space</Text>
                                 <Title order={2} className={classes.rentalTitle}>Lift Space for Rent</Title>

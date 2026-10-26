@@ -64,3 +64,42 @@
         width: 100%;
     }
 }
+/* <details>-based FAQ */
+details.item {
+    margin-bottom: var(--mantine-spacing-md);
+}
+
+summary.control {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--mantine-spacing-md);
+}
+
+summary.control::-webkit-details-marker {
+    display: none;
+}
+
+summary.control::after {
+    content: '+';
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    color: var(--mantine-color-white);
+    background-image: radial-gradient(circle, var(--mantine-color-orange-5) 0%, var(--mantine-color-orange-7) 100%);
+    transition: transform 150ms ease;
+}
+
+details[open] > summary.control::after {
+    transform: rotate(45deg);
+}
+
+details.item > p.content {
+    margin: 0;
+    padding: 0 var(--mantine-spacing-xl) var(--mantine-spacing-lg);
+}

@@ -5,94 +5,36 @@
     <link rel="icon" type="image/svg+xml" href="/wrench.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Everything between head:start and head:end is replaced per page by scripts/prerender.js
-         (from src/data/pages.js). These defaults only show on the dev server. -->
+         (from src/data/pages.js and src/seo.js, including the AutoRepair JSON-LD). These defaults
+         only show on the dev server. -->
     <!--head:start-->
     <title>NKG Auto Repair | Auto Repair Shop in Bayview, San Francisco</title>
     <meta
       name="description"
-      content="Auto repair shop in Bayview-Hunters Point, San Francisco offering oil changes, brake repair, engine diagnostics, transmission, suspension, and A/C repair. Serving drivers since 2009 with transparent estimates."
+      content="Family-owned auto repair shop in Bayview-Hunters Point, San Francisco since 2009. Brakes, oil changes, diagnostics, AC and more. Walk-ins welcome Mon–Sat."
     />
     <link rel="canonical" href="https://nkgautorepair.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="NKG Auto Repair | Auto Repair Shop in Bayview, San Francisco" />
     <meta
       property="og:description"
-      content="Auto repair shop in Bayview-Hunters Point, San Francisco offering oil changes, brake repair, engine diagnostics, transmission, suspension, and A/C repair. Serving drivers since 2009 with transparent estimates."
+      content="Family-owned auto repair shop in Bayview-Hunters Point, San Francisco since 2009. Brakes, oil changes, diagnostics, AC and more. Walk-ins welcome Mon–Sat."
     />
     <meta property="og:url" content="https://nkgautorepair.com/" />
     <meta name="twitter:title" content="NKG Auto Repair | Auto Repair Shop in Bayview, San Francisco" />
     <meta
       name="twitter:description"
-      content="Auto repair shop in Bayview-Hunters Point, San Francisco offering oil changes, brake repair, engine diagnostics, transmission, suspension, and A/C repair. Serving drivers since 2009 with transparent estimates."
+      content="Family-owned auto repair shop in Bayview-Hunters Point, San Francisco since 2009. Brakes, oil changes, diagnostics, AC and more. Walk-ins welcome Mon–Sat."
     />
     <!--head:end-->
 
     <meta property="og:site_name" content="NKG Auto Repair" />
-    <meta property="og:image" content="https://nkgautorepair.com/header/logo.png" />
+    <meta property="og:image" content="https://nkgautorepair.com/images/og-nkg-auto-repair.jpg" />
+    <meta property="og:image:width" content="1000" />
+    <meta property="og:image:height" content="525" />
+    <meta property="og:image:alt" content="The NKG Auto Repair team inside the shop in Bayview-Hunters Point, San Francisco" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://nkgautorepair.com/header/logo.png" />
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "AutoRepair",
-        "@id": "https://nkgautorepair.com/#business",
-        "name": "NKG Auto Repair",
-        "url": "https://nkgautorepair.com/",
-        "telephone": "+1-415-239-7450",
-        "email": "nkgautorepair@gmail.com",
-        "image": "https://nkgautorepair.com/header/logo.png",
-        "description": "Auto repair shop in Bayview-Hunters Point, San Francisco offering oil changes, brake repair, engine diagnostics, transmission, suspension, and A/C repair. Serving drivers since 2009 with transparent estimates.",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "1400 Carroll Ave",
-          "addressLocality": "San Francisco",
-          "addressRegion": "CA",
-          "postalCode": "94124",
-          "addressCountry": "US"
-        },
-        "areaServed": [
-          "Bayview-Hunters Point, San Francisco, CA",
-          "San Francisco, CA"
-        ],
-        "serviceType": [
-          "Oil changes",
-          "Brake repair",
-          "Engine diagnostics",
-          "Transmission service",
-          "Suspension and steering",
-          "A/C repair"
-        ],
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 37.723174,
-          "longitude": -122.3896918
-        },
-        "openingHoursSpecification": [
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-              "Saturday"
-            ],
-            "opens": "08:00",
-            "closes": "17:00"
-          }
-        ],
-        "sameAs": [
-          "https://www.facebook.com/profile.php?id=61562081127971",
-          "https://maps.app.goo.gl/zsSmn8gs6WHYn4Gz9"
-        ],
-        "priceRange": "$$"
-      }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    <meta name="twitter:image" content="https://nkgautorepair.com/images/og-nkg-auto-repair.jpg" />
   </head>
   <body>
     <div id="root"></div>

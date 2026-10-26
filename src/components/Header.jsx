@@ -30,14 +30,18 @@ export function Header() {
         <Box pb={120}>
             <header className={classes.header}>
                 <Group justify="space-between" h="100%">
-                    <button
-                        type="button"
+                    <a
+                        href="/"
+                        aria-label="NKG Auto Repair home"
                         className={classes.brand}
-                        onClick={() => handleNavigate('/')}
+                        onClick={(event) => {
+                            event.preventDefault();
+                            handleNavigate('/');
+                        }}
                     >
                         <span className={classes.brandTop}>NKG AUTO</span>
                         <span className={classes.brandBottom}>REPAIR</span>
-                    </button>
+                    </a>
 
                     <Group h="100%" gap={0} visibleFrom="sm">
                         {links}

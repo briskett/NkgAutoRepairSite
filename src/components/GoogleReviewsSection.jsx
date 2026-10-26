@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Button, Card, Container, Group, Loader, SimpleGrid, Text, Title } from '@mantine/core';
 import { IconStarFilled } from '@tabler/icons-react';
 import classes from '../stylesheets/GoogleReviewsSection.module.css';
+import { business } from '../data/business.js';
 
 function buildStars(rating = 0) {
     const fullStars = Math.round(rating);
@@ -89,10 +90,7 @@ export function GoogleReviewsSection() {
 
                 {!loading && error ? (
                     <Card className={classes.fallbackCard}>
-                        <Text>{error}</Text>
-                        <Text size="sm" c="dimmed" mt={6}>
-                            Add `VITE_GOOGLE_PLACES_API_KEY` and `VITE_GOOGLE_PLACE_ID` to your `.env` file.
-                        </Text>
+                        <Text>Read what our customers say about us on Google using the button below.</Text>
                     </Card>
                 ) : null}
 
@@ -131,7 +129,7 @@ export function GoogleReviewsSection() {
                         component="a"
                         target="_blank"
                         rel="noreferrer"
-                        href="https://maps.app.goo.gl/zsSmn8gs6WHYn4Gz9"
+                        href={business.mapsUrl}
                         color="orange"
                         variant="light"
                     >

@@ -17,6 +17,7 @@
     color: var(--mantine-color-gray-0);
     cursor: pointer;
     text-align: left;
+    text-decoration: none;
 }
 
 .brandTop {

@@ -99,7 +99,7 @@ export default function ServiceDetail() {
                                     {business.postalCode}
                                 </Text>
                                 <Text className={classes.cardBody}>
-                                    {business.hours}. {business.closed}.
+                                    {business.hours}, {business.closed.toLowerCase()}.
                                 </Text>
                                 <Text className={classes.cardBody} mt="sm">
                                     We’re in {business.neighborhood}, a short drive from {nearbyNeighborhoods}.

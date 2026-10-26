@@ -10,7 +10,7 @@ import {MapSection} from "../components/MapSection.jsx";
 function Home() {
 
     return (
-        <div>
+        <main>
             <div id="home">
                 <HeroImageBackground/>
             </div>
@@ -18,9 +18,7 @@ function Home() {
                 <FeaturesAsymmetrical/>
             </div>
             <ServicesSection />
-            <div id="reviews">
-                <GoogleReviewsSection />
-            </div>
+            <GoogleReviewsSection />
             <div id="faq">
                 <FaqWithBg/>
             </div>
@@ -28,7 +26,7 @@ function Home() {
                 <Contact/>
             </div>
             <MapSection />
-        </div>
+        </main>
     );
 }
 
